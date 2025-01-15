@@ -1,4 +1,4 @@
-package gestorAplicacion.enrutadorHFC;
+package gestorAplicacion.enrutadorWiMax;
 
 import java.util.ArrayList;
 
