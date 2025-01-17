@@ -1,4 +1,4 @@
-package gestorAplicaciones.enrutadorWiMax;
+package gestorAplicacion.enrutadorWiMax;
 
     private int identificador;
     private Point2D coordenadas;
@@ -7,4 +7,3 @@ package gestorAplicaciones.enrutadorWiMax;
     private ProveedorInternet proveedor;
     private static ArrayList<Antena> antenasTotales = new ArrayList<>(); 
 
-}

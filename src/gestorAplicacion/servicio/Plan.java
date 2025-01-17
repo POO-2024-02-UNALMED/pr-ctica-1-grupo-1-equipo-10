@@ -1,4 +1,4 @@
-package gestorAplicaciones.servicio;
+package gestorAplicacion.servicio;
 
 import java.util.*;
 

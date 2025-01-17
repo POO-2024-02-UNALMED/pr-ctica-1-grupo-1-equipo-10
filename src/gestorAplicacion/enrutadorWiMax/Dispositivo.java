@@ -1,4 +1,6 @@
-package gestorAplicaciones.enrutadorWiMax;
+package gestorAplicacion.enrutadorWiMax;
+
+import java.io.Serializable;
 
 public class Dispositivo implements Serializable{
 

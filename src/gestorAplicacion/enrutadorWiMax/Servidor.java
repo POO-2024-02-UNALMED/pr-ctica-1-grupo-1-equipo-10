@@ -1,8 +1,9 @@
 package gestorAplicacion.enrutadorWiMax;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Servidor {
+public class Servidor implements Serializable{
     private String sede;
     private boolean saturado = false;
     private ProveedorInternet proveedor;

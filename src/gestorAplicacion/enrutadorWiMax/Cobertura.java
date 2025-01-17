@@ -1,4 +1,4 @@
-package gestorAplicaciones.enrutadorWiMax;
+package gestorAplicacion.enrutadorWiMax;
 
 public abstract class Cobertura {
 
