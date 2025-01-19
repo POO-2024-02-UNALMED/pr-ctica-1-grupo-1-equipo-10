@@ -49,6 +49,7 @@ public class Cliente implements Serializable {
     proveedor.getClientes().add(this);
   }
 
+  //METODOS (SON 3, NO HAY SOBRECARGA)
   //METODO INSTANCIA: FUNCIONALIDAD ADQUISICION DE PLAN (RETORNA UN ARREGLO CON CLIENTES QUE PERTENECEN A UN PLAN ESPECÍFICO)
   public ArrayList<Cliente> buscarCliente(ArrayList<Cliente> clientes, String nombrePlan) {
     ArrayList<Cliente> clientesPorPlan new ArrayList<Cliente>();
