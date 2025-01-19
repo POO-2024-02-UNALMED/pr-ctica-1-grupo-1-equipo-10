@@ -53,7 +53,7 @@ public class Cliente implements Serializable {
   
   //METODO INSTANCIA: FUNCIONALIDAD ADQUISICION DE PLAN (RETORNA UN ARREGLO CON CLIENTES QUE PERTENECEN A UN PLAN ESPECÍFICO)
   public ArrayList<Cliente> buscarCliente(ArrayList<Cliente> clientes, String nombrePlan) {
-    ArrayList<Cliente> clientesPorPlan new ArrayList<Cliente>();
+    ArrayList<Cliente> clientesPorPlan = new ArrayList<Cliente>();
     for (Cliente cliente : clientes) {
       if (cliente.getNombre.Plan()!=null) {
         if (cliente.getNombrePlan().equals(nombrePlan)) {
@@ -87,10 +87,10 @@ public class Cliente implements Serializable {
         }
       }
     }
-    if (plan.equals(anObject:"BASIC")) {
+    if (plan.equals("BASIC")) {
       cliente.setNombrePlan(plan);
       cliente.setPlan(cliente.getProveedor().getPlanes().getBASIC());
-      Router routercliente = new Router(cliente.getProveedor().getPlanes().getBASIC().get(index:0), cliente.getProveedor().getPlanes().getBASIC().get(index:1), online:true, servidorAsociado);
+      Router routercliente = new Router(cliente.getProveedor().getPlanes().getBASIC().get(0), cliente.getProveedor().getPlanes().getBASIC().get(1), online:true, servidorAsociado);
       cliente.setModem(routercliente);
       routercliente.setSede(sede);
       Plano planoCliente = new Plano(coordenadaX, coordenadaY);
@@ -106,10 +106,10 @@ public class Cliente implements Serializable {
         }
       }
       
-    } else if (plan.equals(anObject:"STANDARD")) {
+    } else if (plan.equals("STANDARD")) {
       cliente.setNombrePlan(plan);
       cliente.setPlan(cliente.getProveedor().getPlanes().getSTANDARD());
-      Router routercliente = new Router(cliente.getProveedor().getPlanes().getSTANDARD().get(index:0), cliente.getProveedor().getPlanes().getSTANDARD().get(index:1), online:true, servidorAsociado);
+      Router routercliente = new Router(cliente.getProveedor().getPlanes().getSTANDARD().get(0), cliente.getProveedor().getPlanes().getSTANDARD().get(1), online:true, servidorAsociado);
       cliente.setModem(routercliente);
       routercliente.setSede(sede);
       Plano planoCliente = new Plano(coordenadaX, coordenadaY);
@@ -128,7 +128,7 @@ public class Cliente implements Serializable {
     } else { 
       cliente.setNombrePlan(plan);
       cliente.setPlan(cliente.getProveedor().getPlanes().getPREMIUM());
-      Router routercliente = new Router(cliente.getProveedor().getPlanes().getPREMIUM().get(index:0), cliente.getProveedor().getPlanes().getPREMIUM().get(index:1), online:true, servidorAsociado);
+      Router routercliente = new Router(cliente.getProveedor().getPlanes().getPREMIUM().get(0), cliente.getProveedor().getPlanes().getPREMIUM().get(1), online:true, servidorAsociado);
       cliente.setModem(routercliente);
       routercliente.setSede(sede);
       Plano planoCliente = new Plano(coordenadaX, coordenadaY);
