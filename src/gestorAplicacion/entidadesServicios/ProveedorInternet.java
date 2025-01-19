@@ -91,7 +91,7 @@ public class ProveedorInternet implements Serializable {
   //METODO ESTATICO: FUNCIONALIDAD ADQUISICION PLAN (MEDIANTE EL ARREGLO ESTÁTICO DE TODOS LOS SERVIDORES DE LA CLASE SERVIDOR, SE HALLAN LOS PROVEEDORES QUE PERTENEZCAN A UNA SEDE ESPECIFICA)
   public static ArrayList<ProveedorInternet> proveedorSede(String sede) {
     ArrayList<ProveedorInternet> proveedores = new ArrayList<>();
-    for (Servidor servidor : Servidos.getServidoresTotales()) {
+    for (Servidor servidor : Servidor.getServidoresTotales()) {
       if (servidor.getSede().equals(sede)) {
         proveedores.add(servidor.getProveedor());
       }
