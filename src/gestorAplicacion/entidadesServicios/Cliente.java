@@ -18,7 +18,7 @@ public class Cliente implements Serializable {
   private String nombrePlan;
   private Factura factura;
 
-//CONSTRUCTORES (SON 3, SOBRECARGA)
+//CONSTRUCTORES (SON 3, SOBRECARGA EN TODOS)
   public Cliente(String nombre, long id, Router modem, ProveedorInternet proveedor,
                 ArrayList<Integer> plan, String nombrePlan, Factura factura) {
     this.ID = id;
@@ -50,6 +50,7 @@ public class Cliente implements Serializable {
   }
 
   //METODOS (SON 3, NO HAY SOBRECARGA)
+  
   //METODO INSTANCIA: FUNCIONALIDAD ADQUISICION DE PLAN (RETORNA UN ARREGLO CON CLIENTES QUE PERTENECEN A UN PLAN ESPECÍFICO)
   public ArrayList<Cliente> buscarCliente(ArrayList<Cliente> clientes, String nombrePlan) {
     ArrayList<Cliente> clientesPorPlan new ArrayList<Cliente>();
