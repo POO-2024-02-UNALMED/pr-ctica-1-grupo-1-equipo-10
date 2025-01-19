@@ -6,7 +6,7 @@ import gestorAplicacion.enrutadorWiMax.Servidor;
 import gestorAplicacion.servicio.Plan;
 import gestorAplicacion.enrutadorWiMax.Dispositivo;
 
-//CLASE PRINCIPAL (SE RELACIONA CON EL CLIENTE), ATRIBUTOS
+//CLASE IMPORTANTE (SE RELACIONA CON EL CLIENTE), ATRIBUTOS
 public class ProveedorInternet implements Serializable {
   private Plan planes;
   private String nombre;
@@ -63,7 +63,7 @@ public class ProveedorInternet implements Serializable {
     return null;
   }
 
-  //METODO INSTANCIA: FUNCIONALIDAD ADQUISICION PLAN (OBTIENE LOS CLIENTES ASOCIADOS SEPARADOS POR EL TIPO DE PLAN INVOCANDO EL METODO BUSCARCLIENTE. COMPRUEBA QUE HAYAN CUPOS EN CADA UNO DE LOS PLANES)
+  //METODO INSTANCIA: FUNCIONALIDAD ADQUISICION PLAN (OBTIENE LOS CLIENTES ASOCIADOS SEPARADOS POR EL TIPO DE PLAN INVOCANDO EL METODO buscarCliente. COMPRUEBA QUE HAYAN CUPOS EN CADA UNO DE LOS PLANES)
   public ArrayList<String> planesDisponibles (Cliente cliente) {
     ArrayList<Cliente> clientesBasic = cliente.buscarCliente(this.clientes, nombrePlan:"BASIC");
     ArrayList<Cliente> clientesStandard = cliente.buscarCliente(this.clientes, nombrePlan:"STANDARD");
@@ -124,13 +124,36 @@ public class ProveedorInternet implements Serializable {
     this.nombre = nombre;
   }
 
-  
+  public ArrayList<Cliente> getClientes() {
+    return clientes;
+  }
+  public void setClientes(ArrayList<Cliente> clientes) {
+    this.clientes = clientes;
+  }
+
+  public int getCLIENTES_MAX() {
+    return CLIENTES_MAX;
+  }
+
+  public int getCLIENTES_BASIC() {
+    return CLIENTES_BASIC;
+  }
+
+  public int getCLIENTES_STANDARD() {
+    return CLIENTES_STANDARD;
+  }
+
+  public int getCLIENTES_PREMIUM() {
+    return CLIENTES_PREMIUM;
+  }
+
+  public static ArrayList<ProveedorInternet> getProveedoresTotales() {
+    return proveedoresTotales;
+  }
+  public static void setProveedoresTotales(ArrayList<ProveedorInternet> proveedoresTotales) {
+    ProveedorInternet.proveedoresTotales = proveedoresTotales;
+  }
 
 
-
-
-
-
-  
 }
 
