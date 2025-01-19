@@ -1,12 +1,15 @@
 package gestorAplicacion.entidadesServicios;
 
+import java.io.Serializable;
 import java.util.*;
 import gestorAplicacion.enrutadorWiMax.Router;
 import gestorAplicacion.enrutadorWiMax.Servidor;
+import gestorAplicacion.servicio.Factura;
 import gestorAplicacion.servicio.Plano;
 import gestorAplicacion.enrutadorWiMax.Antena;
 
-public class Cliente                      {
+//CLASE PRINCIPAL (LAS FUNCIONALIDADES SE ORIENTAN HACIA LOS CLIENTES), ATRIBUTOS
+public class Cliente implements Serializable {
   private String nombre;
   private final long ID;
   private Router modem;
@@ -15,6 +18,7 @@ public class Cliente                      {
   private String nombrePlan;
   private Factura factura;
 
+//CONSTRUCTORES (SON 3, SOBRECARGA)
   public Cliente(String nombre, long id, Router modem, ProveedorInternet proveedor,
                 ArrayList<Integer> plan, String nombrePlan, Factura factura) {
     this.ID = id;
@@ -45,6 +49,115 @@ public class Cliente                      {
     proveedor.getClientes().add(this);
   }
 
+  //METODO INSTANCIA: FUNCIONALIDAD ADQUISICION DE PLAN (RETORNA UN ARREGLO CON CLIENTES QUE PERTENECEN A UN PLAN ESPECÍFICO)
+  public ArrayList<Cliente> buscarCliente(ArrayList<Cliente> clientes, String nombrePlan) {
+    ArrayList<Cliente> clientesPorPlan new ArrayList<Cliente>();
+    for (Cliente cliente : clientes) {
+      if (cliente.getNombre.Plan()!=null) {
+        if (cliente.getNombrePlan().equals(nombrePlan)) {
+          clientesPorPlan.add(cliente);
+        }
+      }
+    }
+    return clientesPorPlan;
+  }
+
+  //METODO ESTATICO: FUNCIONALIDAD REPORTE (RETORNA UN ARREGLO CON CLIENTES QUE PERTENECEN A UN MISMO PROVEEDOR, SEDE Y PLAN)
+  public static ArrayList<Cliente> buscarCliente1(String sede, String nombrePlan, ProveedorInternet proveedor) {
+    ArrayList<Cliente> clientesPlan = new ArrayList<Cliente>();
+    for (Cliente cliente : proveedor.getClientes()) {
+      if (cliente.getNombrePlan()!= null) {
+        if ((cliente.getNombrePlan().equals(nombrePlan)) && (cliente.getModem().getSede.equals(sede))) {
+          clientesPlan.add(cliente);
+        }
+      }
+    }
+    return clientesPlan;
+  }
+
+   //METODO INSTANCIA: FUNCIONALIDAD ADQUISICION DE PLAN (REALIZA TODOS LOS CAMBIOS NECESARIOS PARA REGISTRAR A UN CLIENTE NUEVO, BUSCA UN SERVIDOR Y UNA ANTENA DEL PROVEEDOR INDICADO PARA ASOCIARLOS AL NUEVO ROUTER)
+  public Factura configurarPlan (String plan, Cliente cliente, String sede, int coordenadaX, int coordenadaY) {
+    Servidor servidorAsociado = null;
+    for (Servidor servidor : Servidor.getServidoresTotales()) {
+      if (servidor.getProvedor().getNombre().equals(cliente.getProveedor().getNombre())) {
+        if (servidor.getSede().equals(sede)) {
+          servidorAsociado = servidor;
+        }
+      }
+    }
+    if (plan.equals(anObject:"BASIC")) {
+      cliente.setNombrePlan(plan);
+      cliente.setPlan(cliente.getProveedor().getPlanes().getBASIC());
+      Router routercliente = new Router(cliente.getProveedor().getPlanes().getBASIC().get(index:0), cliente.getProveedor().getPlanes().getBASIC().get(index:1), online:true, servidorAsociado);
+      cliente.setModem(routercliente);
+      routercliente.setSede(sede);
+      Plano planoCliente = new Plano(coordenadaX, coordenadaY);
+      planoCliente.setSede(servidorAsociado.getCoordenadas().getSede());
+      routercliente.setCoordenadas(planoCliente);
+
+      for (Antena antena : Antena.getAntenasTotales()) {
+        if (antena.getSede().equals(sede)) {
+          if (antena.getProveedor().getNombre().equals(cliente.getProveedor().getNombre())) {
+            routercliente.setAntenaAsociada(antena);
+            break;
+          }
+        }
+      }
+      
+    } else if (plan.equals(anObject:"STANDARD")) {
+      cliente.setNombrePlan(plan);
+      cliente.setPlan(cliente.getProveedor().getPlanes().getSTANDARD());
+      Router routercliente = new Router(cliente.getProveedor().getPlanes().getSTANDARD().get(index:0), cliente.getProveedor().getPlanes().getSTANDARD().get(index:1), online:true, servidorAsociado);
+      cliente.setModem(routercliente);
+      routercliente.setSede(sede);
+      Plano planoCliente = new Plano(coordenadaX, coordenadaY);
+      planoCliente.setSede(servidorAsociado.getCoordenadas().getSede());
+      routercliente.setCoordenadas(planoCliente);
+
+      for (Antena antena : Antena.getAntenasTotales()) {
+        if (antena.getSede().equals(sede)) {
+          if (antena.getProveedor().getNombre().equals(cliente.getProveedor().getNombre())) {
+            routercliente.setAntenaAsociada(antena);
+            break;
+          }
+        }
+      }
+      
+    } else { 
+      cliente.setNombrePlan(plan);
+      cliente.setPlan(cliente.getProveedor().getPlanes().getPREMIUM());
+      Router routercliente = new Router(cliente.getProveedor().getPlanes().getPREMIUM().get(index:0), cliente.getProveedor().getPlanes().getPREMIUM().get(index:1), online:true, servidorAsociado);
+      cliente.setModem(routercliente);
+      routercliente.setSede(sede);
+      Plano planoCliente = new Plano(coordenadaX, coordenadaY);
+      planoCliente.setSede(servidorAsociado.getCoordenadas().getSede());
+      routercliente.setCoordenadas(planoCliente);
+
+      for (Antena antena : Antena.getAntenasTotales()) {
+        if (antena.getSede().equals(sede)) {
+          if (antena.getProveedor().getNombre().equals(cliente.getProveedor().getNombre())) {
+            routercliente.setAntenaAsociada(antena);
+            break;
+          }
+        }
+      }
+    }
+
+    return new Factura(cliente);    
+  }
+
+
+  
+
+
+
+  
+
+
+
+  
+
+ 
     
                 
   
