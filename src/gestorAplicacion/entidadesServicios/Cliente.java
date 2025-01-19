@@ -146,19 +146,54 @@ public class Cliente implements Serializable {
     return new Factura(cliente);    
   }
 
-
+  //METODOS GET Y SET
+  public String getNombre() {
+    return nombre;
+  }
+  public void setNombre(String nombre) {
+    this.nombre = nombre;
+  }
   
+  public long getID() {
+    return ID;
+  }
 
-
-
+  public Router getModem() {
+    return modem;
+  }
+  public void setModem(Router modem) {
+    this.modem = modem;
+  }
   
+  public ProveedorInternet getProveedor() {
+    return proveedor;
+  }
+  public void setProveedor(ProveedorInternet proveedor) {
+    this.proveedor = proveedor;
+  }
+
+  public ArrayList<Integer> getPlan() {
+    return plan;
+  }
+  public void setPlan(ArrayList<Integer> plan) {
+    this.plan = plan;
+  }
+
+  public String getNombrePlan() {
+    return nombrePlan;
+  }
+  public void setNombrePlan(String nombrePlan) {
+    this.nombrePlan = nombrePlan;
+  }
+
+  public Factura getFactura() {
+    return factura;
+  }
+  public void setFactura(Factura factura) {
+    this.factura = factura;
+  }             
 
 
-
-  
-
- 
-    
-                
   
 }
+
