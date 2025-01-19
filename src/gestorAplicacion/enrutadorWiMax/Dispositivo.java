@@ -13,15 +13,66 @@ public class Dispositivo implements Serializable{
 	public Dispositivo(Router modem,String nombre,String generacion) {
 	    this.modem = modem;
 	    this.nombre = nombre;
+		ipAsociada=this.modem.getIP();
       	this.generacion=generacion;
+		dispositivosTotales.add(this);
+	}
+	//MÉTODOS
+
+    //METODO DE ESTATICO---FUNCIONALIDAD TEST
+	public static String desconectarDispositivo(Cliente cliente,Dispositivo dispositivo) {
+	    if(cliente.getModem().verificarDispositivos(dispositivosTotales,cliente.getModem()).contains(dispositivo)){
+	      dispositivo.setIpAsociada("");
+	      return "Dispositivo desconectado correctamente.";
+	    }else{
+	      return "Dispositivo inválido, intente de nuevo.";
+	    } 
 	}
 
-    public Router getModem() {
+	//METODO TOSTRING
+	public String toString() {
+		return "Dispositivo: "+ this.nombre + "\nDirección IP: "+ this.ipAsociada+"\nGeneración: "+this.generacion;
+	}
+
+
+	//GETTERS Y SETTERS
+	public Router getModem() {
 		return modem;
 	}
 
 	public void setModem(Router modem) {
 		this.modem = modem;
 	}
+
+	public String getIpAsociada() {
+		return ipAsociada;
+	}
+
+	public void setIpAsociada(String ipAsociada) {
+		this.ipAsociada = ipAsociada;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getGeneracion() {
+		return generacion;
+	}
+
+	public void setGeneracion(String generacion) {
+		this.generacion = generacion;
+	}
+
+	public static ArrayList<Dispositivo> getDispositivosTotales() {
+		return dispositivosTotales;
+	}
+
+	public static void setDispositivosTotales(ArrayList<Dispositivo> dispositivosTotales) {
+		Dispositivo.dispositivosTotales = dispositivosTotales;
+	}
 }
-  
