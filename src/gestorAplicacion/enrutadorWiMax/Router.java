@@ -1,6 +1,8 @@
 package gestorAplicacion.enrutadorWiMax;
-import java.util.*;
 
+import java.util.*;
+import gestorAplicacion.entidadesServicios.Cliente;
+import gestorAplicacion.servicio.Plano;
 
 
 public class Router extends Cobertura {

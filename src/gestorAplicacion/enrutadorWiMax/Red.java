@@ -1,8 +1,8 @@
 package gestorAplicacion.enrutadorWiMax;
 
+import gestorAplicacion.entidadesServicios.Cliente;
+import gestorAplicacion.entidadesServicios.ProveedorInternet;
 import java.util.ArrayList;
-import gestorAplicacion.host.Cliente;
-import gestorAplicacion.host.ProveedorInternet;
 
 interface Red{
   

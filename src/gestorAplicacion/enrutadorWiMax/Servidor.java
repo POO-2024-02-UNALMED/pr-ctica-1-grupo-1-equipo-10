@@ -31,7 +31,6 @@ public class Servidor implements Red, Serializable{
         FLUJO_RED_NETO=0;
   }
 
-
   public static ArrayList<Servidor> buscarServidores(String localidad) {
     ArrayList<Servidor> serviSede = new ArrayList<Servidor>();
     for (Servidor servidor : servidoresTotales) {

@@ -1,6 +1,8 @@
 package gestorAplicacion.enrutadorWiMax;
 
+import gestorAplicacion.entidadesServicios.cliente;
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class Dispositivo implements Serializable{
 
@@ -33,7 +35,6 @@ public class Dispositivo implements Serializable{
 	public String toString() {
 		return "Dispositivo: "+ this.nombre + "\nDirección IP: "+ this.ipAsociada+"\nGeneración: "+this.generacion;
 	}
-
 
 	//GETTERS Y SETTERS
 	public Router getModem() {
