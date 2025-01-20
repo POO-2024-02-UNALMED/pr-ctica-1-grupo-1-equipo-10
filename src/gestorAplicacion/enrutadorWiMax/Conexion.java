@@ -1,6 +1,6 @@
 package gestorAplicacion.enrutadorWiMax;
 
-import gestorAplicacion.host.Cliente;
+import gestorAplicacion.entidadesServicios.Cliente;
 
 public class Conexion extends Router{
 
