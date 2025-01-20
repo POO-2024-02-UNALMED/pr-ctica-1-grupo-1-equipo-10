@@ -224,7 +224,273 @@ public class Main {
               
               break;
 
+              case 2: //FUNCIONALIDAD VISUALIZAR DISPOSITIVOS 
+
+              //SE SOLICITA LOS DATOS
+  
+              System.out.println("Ingresa tu Id: ");
+              ID = sc.nextLong();
               
+              System.out.println("Ingresa el nombre de tu proveedor: ");
+              sc.nextLine();
+              String proveedor = sc.nextLine().toLowerCase();
+  
+              proveedorActual = null;
+  
+              //SE HALLA EL PROVEEDOR INDICADO
+              boolean Vcontrol3 = false;
+              while (Vcontrol3 == false) {
+                  for (ProveedorInternet proveedor1 : ProveedorInternet.getProveedoresTotales()) {
+                      if (proveedor1.getNombre().equals(proveedor)) {
+                      proveedorActual = proveedor1;
+                      }
+                  }
+  
+                  if (proveedorActual != null) {
+  
+                      //SE INSTANCIA EL CLIENTE
+                      Cliente clienteActual = proveedorActual.verificarCliente(ID); //PRIMER METODO DE LA FUNCIONALIDAD
+                    
+                      if (clienteActual != null) { 
+                          System.out.println("\n¡Bienvenido!" + "\nAquí podrás visualizar los dispositivos conectados a tu router.");
+  
+                          Vcontrol3 = true;                                                                  
+                          if (clienteActual.getFactura().verificarFactura(clienteActual.getFactura()) == false) { //SE COMPRUEBA SI TIENE PAGOS ATRASADOS
+  
+                              //SE INDICAN LAS OPCIONES PARA SALDAR LA DEUDA
+                              System.out.println("\nTienes "+clienteActual.getFactura().getPagosAtrasados()+" pagos atrasados, para acceder a esta función debes tener 2 o menos pagos atrasados."+"\nTu factura actualmente está por un valor de $"+clienteActual.getFactura().getPrecio()+", recuerda que el valor mensual de tu plan es de $"+clienteActual.getPlan().get(2)+"\nTenemos las siguientes opciones de pago: "
+                                  + "\n1. Abonar a la deuda." + "\n2. Pagar la totalidad de la deuda." + "\n3. Regresar al menú inicial.");
+  
+                          boolean Vcontrol2 = false;
+                          while (Vcontrol2 == false) {
+  
+                              System.out.print("\n" + "Ingresa el número de la opción que deseas: ");
+                              opc = sc.nextInt();
+  
+                              if (opc == 1 || opc == 2) { //SE PROCEDE A PEDIR EL DINERO Y HACER LAS COMPROBACIONES QUE SE REQUIEREN DE ACUERDO A LA OPCION ELEGIDA
+                                  Vcontrol2 = true;
+  
+                                  boolean Vcontrol4 = false;
+                                  while (Vcontrol4 == false) {
+                                      if (opc == 1) {
+                                          System.out.println("Digita por favor la cantidad a abonar: ");
+                                      } else if (opc == 2) {
+                                          System.out.println("Digita por favor la cantidad total a pagar: ");
+                                      }
+  
+                                      Router routerCliente = clienteActual.getFactura().accionesPagos(opc);
+  
+                                      if (routerCliente != null) { //SEGUNDO METODO DE LA FUNCIONALIDAD
+                                        Vcontrol4 = true;
+                                
+                                      boolean Vcontrol7 = false;
+                                      while (Vcontrol7 == false) {
+  
+                                        System.out.println("Digita por favor la opción que deseas: " + "\n1. Visualizar dispositivos de 3G." + "\n2. Visualizar dispositivos de 4G." + "\n3. Visualizar dispositivos de 5G."
+                                            + "\n4. Visualizar todos los dispositivos conectados."+ "\n5. Regresar al menú inicial.");
+                                        opc = sc.nextInt();
+
+                                        if (opc == 1 || opc == 2 || opc == 3 || opc == 4) { //SE PROCEDE A MOSTRAR POR CONSOLA LOS DISPOSITIVOS DE ACUERDO A LA OPCION ELEGIDA
+                                          Vcontrol7 = true;
+                                
+                                          ArrayList<Dispositivo> lista = routerCliente.verificarDispositivos(Dispositivo.getDispositivosTotales(), routerCliente); //TERCER METODO DE LA FUNCIONALIDAD
+                                
+                                          if (opc == 1) {
+                                              System.out.println("Dispositivos de 3G conectados: ");
+                                              int contador=0;
+                                            for (Dispositivo dispositivo : lista) {
+                                              if (dispositivo.getGeneracion().equals("3G")) {
+                                                System.out.println("Id: "+(int)(Dispositivo.getDispositivosTotales().indexOf(dispositivo)+1));
+                                                System.out.println(dispositivo);
+                                                contador+=1;
+                                                Vcontrol1 = false;
+                                              }
+                                            }
+                                            if (contador==0){
+                                              System.out.println("No tienes dispositivos conectados con esta caracteristica.");  
+                                              Vcontrol7 = false;
+                                              Vcontrol1 = false;
+                                            
+                                            }
+                                          } else if (opc == 2) {
+                                            int contador=0;
+                                            System.out.println("Dispositivos de 4G conectados: ");
+                                            for (Dispositivo dispositivo : lista) {
+                                              if (dispositivo.getGeneracion().equals("4G")) {
+                                                System.out.println("Id: "+(int)(Dispositivo.getDispositivosTotales().indexOf(dispositivo)+1));
+                                                System.out.println(dispositivo);
+                                                contador+=1;
+                                                Vcontrol1 = false;
+                                              }
+                                            }
+
+                                            if (contador==0){
+                                              System.out.println("No tienes dispositivos conectados con esta caracteristica.");  
+                                              Vcontrol7 = false;
+                                              Vcontrol1 = false;
+                                    
+                                            }
+                                
+                                          } else if (opc == 3) {
+                                            int contador=0;
+                                            System.out.println("Dispositivos de 5G conectados: ");
+                                            for (Dispositivo dispositivo : lista) {
+                                              if (dispositivo.getGeneracion().equals("5G")) {
+                                                System.out.println("Id: "+(int)(Dispositivo.getDispositivosTotales().indexOf(dispositivo)+1));
+                                                System.out.println(dispositivo);
+                                                contador+=1;
+                                                Vcontrol1 = false;
+                                              }
+                                            }
+                                            if (contador==0){
+                                              System.out.println("No tienes dispositivos conectados con esta caracteristica.");  
+                                              Vcontrol7 = false;
+                                              Vcontrol1 = false;
+                                            }
+
+                                          } else {
+                                            System.out.println("Lista de dispositivos conectados a tu Router:");
+                                            for (Dispositivo dispositivo : lista) {
+                                              System.out.println("Id: "+(int)(Dispositivo.getDispositivosTotales().indexOf(dispositivo)+1));
+                                              System.out.println(dispositivo);
+                                              Vcontrol1 = false;
+                                              
+                                            }
+                                          }
+                                
+                                        } else if (opc == 5) { //OPCION REGRESAR AL MENU
+                                          Vcontrol7 = true;
+                                          Vcontrol1 = false;
+                                          break;
+
+                                        } else {
+                                          System.out.println("Por favor ingresa una opción válida");
+                                        }
+                                      }
+  
+                                      } else if (clienteActual.getFactura().getPagosAtrasados() > 2 && opc == 1) { //EN CASO QUE DESPUES DE USAR LAS OPCIONES DE PAGO, EL CLIENTE SIGUE DEBIENDO MÁS DE 2 PAGOS
+                                System.out.println("La cantidad ingresada no es suficiente para acceder a esta función.");
+                                Vcontrol1 = false;
+                                break;
+  
+                              } else if (clienteActual.getFactura().getPagosAtrasados() > 2 && opc == 2) { //EN CASO QUE DESPUES DE USAR LAS OPCIONES DE PAGO, EL CLIENTE SIGUE DEBIENDO MÁS DE 2 PAGOS
+                                System.out.println("La cantidad ingresada no es suficiente para acceder a esta funcion.");
+                                Vcontrol1 = false;
+                                break;
+                              }
+                            }
+  
+                          } else if (opc == 3) { //OPCION SALIR
+                            Vcontrol2 = true;
+                            Vcontrol1 = false;
+                            break; 
+  
+                          } else {
+                            System.out.println("Ingresa una opcion valida.");
+                          }
+                        }
+                      } else { // CUANDO EL CLIENTE NO TIENE PAGOS ATRASADOS
+  
+                        boolean Vcontrol7 = false;
+                        while (Vcontrol7 == false) {
+                          System.out.println("Digita por favor la opción que deseas: " + "\n1. Visualizar dispositivos de 3G." + "\n2. Visualizar dispositivos de 4G." + "\n3. Visualizar dispositivos de 5G."
+                          + "\n4. Visualizar todos los dispositivos conectados."+ "\n5. Regresar al menú inicial.");
+                          opc = sc.nextInt();
+  
+                          if (opc == 1 || opc == 2 || opc == 3 || opc == 4) { //SE PROCEDE A MOSTRAR POR CONSOLA LOS DISPOSITIVOS DE ACUERDO A LA OPCION ELEGIDA
+                              Vcontrol7 = true;
+                                    
+                              ArrayList<Dispositivo> lista = clienteActual.getModem().verificarDispositivos(Dispositivo.getDispositivosTotales(), clienteActual.getModem()); //TERCER METODO DE LA FUNCIONALIDAD
+                                    
+                              if (opc == 1) {
+                                System.out.println("Dispositivos de 3G conectados: ");
+                                int contador=0;
+                                for (Dispositivo dispositivo : lista) {
+                                  if (dispositivo.getGeneracion().equals("3G")) {
+                                    System.out.println("Id: "+(int)(Dispositivo.getDispositivosTotales().indexOf(dispositivo)+1));
+                                    System.out.println(dispositivo);
+                                    contador+=1;
+                                    Vcontrol1 = false;
+                                    
+                                  }
+                                }
+                                if (contador==0){
+                                  System.out.println("No tienes dispositivos conectados con esta caracteristica.");  
+                                  Vcontrol7 = false;
+                                  Vcontrol1 = false;
+                                  
+                                }
+                              } else if (opc == 2) {
+                                int contador=0;
+                                System.out.println("Dispositivos de 4G conectados: ");
+                                for (Dispositivo dispositivo : lista) {
+                                    if (dispositivo.getGeneracion().equals("4G")) {
+                                      System.out.println("Id: "+(int)(Dispositivo.getDispositivosTotales().indexOf(dispositivo)+1));
+                                      System.out.println(dispositivo);
+                                      contador+=1;
+                                      Vcontrol1 = false;
+                                      
+                                    }
+                                }
+                                if (contador==0){
+                                  System.out.println("No tienes dispositivos conectados con esta caracteristica.");  
+                                  Vcontrol7 = false;
+                                  Vcontrol1 = false; 
+                                }  
+                                    
+                              }else if (opc == 3) {
+                                int contador=0;
+                                System.out.println("Dispositivos de 5G conectados: ");
+                                for (Dispositivo dispositivo : lista) {
+                                  if (dispositivo.getGeneracion().equals("5G")) {
+                                    System.out.println("Id: "+(int)(Dispositivo.getDispositivosTotales().indexOf(dispositivo)+1));
+                                    System.out.println(dispositivo);
+                                    contador+=1;
+                                    Vcontrol1 = false;
+                                  }
+                                }      
+                                if (contador==0){
+                                        System.out.println("No tienes dispositivos conectados con esta caracteristica.");  
+                                        Vcontrol7 = false;
+                                        Vcontrol1 = false;
+                                }
+                              } else {
+                                  System.out.println("Lista de dispositivos conectados a tu Router:");
+                                    for (Dispositivo dispositivo : lista) {
+                                      System.out.println("Id: "+(int)(Dispositivo.getDispositivosTotales().indexOf(dispositivo)+1));
+                                      System.out.println(dispositivo);
+                                      Vcontrol1 = false;
+                                        
+                                    }
+                              }
+                                    
+                          } else if (opc == 5) { //REGRESO AL MENU PRINCIPAL
+                              Vcontrol7 = true;
+                              Vcontrol1 = false;
+                              break;
+                          } else {
+                            System.out.println("Por favor ingresa una opción válida");
+                          }
+                       }
+                      }
+                    } else {
+                      System.out.println("No tienes permitido visualizar los dispositivos conectados con este proveedor.");
+                      break;
+                    }
+                    Vcontrol3 = false;
+                    break; 
+  
+                } else {
+                    System.out.println("Datos incorrectos, introdúcelos de nuevo.");
+                    System.out.println("Ingrese tu Id: ");
+                    ID = sc.nextLong();
+                    System.out.println("Ingresa el nombre de tu proveedor: ");
+                    sc.nextLine();
+                    proveedor = sc.nextLine().toLowerCase();
+                }
+              }
+  
+              break;
 
 
 
