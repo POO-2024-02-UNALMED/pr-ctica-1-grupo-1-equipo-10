@@ -39,9 +39,9 @@ public class ProveedorInternet implements Serializable {
   public Cliente verificarCliente (long id) {
     for (Cliente cliente : clientes) {
       if (cliente.getID() == id) {
-        if (cliente.getNombrePlan().equals(anObject:"PREMIUM")) {
+        if (cliente.getNombrePlan().equals("PREMIUM")) {
           return cliente;
-        } else if (cliente.getNombrePlan().equals(anObject:"STANDARD")) {
+        } else if (cliente.getNombrePlan().equals("STANDARD")) {
           return cliente;
         } else {
           return null;
@@ -65,19 +65,19 @@ public class ProveedorInternet implements Serializable {
 
   //METODO INSTANCIA: FUNCIONALIDAD ADQUISICION PLAN (OBTIENE LOS CLIENTES ASOCIADOS SEPARADOS POR EL TIPO DE PLAN INVOCANDO EL METODO buscarCliente. COMPRUEBA QUE HAYAN CUPOS EN CADA UNO DE LOS PLANES)
   public ArrayList<String> planesDisponibles (Cliente cliente) {
-    ArrayList<Cliente> clientesBasic = cliente.buscarCliente(this.clientes, nombrePlan:"BASIC");
-    ArrayList<Cliente> clientesStandard = cliente.buscarCliente(this.clientes, nombrePlan:"STANDARD");
-    ArrayList<Cliente> clientesPremium = cliente.buscarCliente(this.clientes, nombrePlan:"PREMIUM");
+    ArrayList<Cliente> clientesBasic = cliente.buscarCliente(this.clientes, "BASIC");
+    ArrayList<Cliente> clientesStandard = cliente.buscarCliente(this.clientes, "STANDARD");
+    ArrayList<Cliente> clientesPremium = cliente.buscarCliente(this.clientes, "PREMIUM");
     ArrayList<String> planesD = new ArrayList<String>();
 
     if (clientesBasic.size() < this.CLIENTES_BASIC) {
-      planesD.add(e:"BASIC");
+      planesD.add("BASIC");
     }
     if (clientesStandard.size() < this.CLIENTES_STANDARD) {
-      planesD.add(e:"STANDARD");
+      planesD.add("STANDARD");
     }
     if ((clientesPremium.size() < this.CLIENTES_PREMIUM)) {
-      planesD.add(e:"PREMIUM");
+      planesD.add("PREMIUM");
     }
     return planesD;
   }

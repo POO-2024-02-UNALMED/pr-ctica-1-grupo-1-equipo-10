@@ -1,6 +1,6 @@
 package gestorAplicacion.enrutadorWiMax;
 
-import gestorAplicacion.entidadesServicios.cliente;
+import gestorAplicacion.entidadesServicios.Cliente;
 import java.io.Serializable;
 import java.util.ArrayList;
 

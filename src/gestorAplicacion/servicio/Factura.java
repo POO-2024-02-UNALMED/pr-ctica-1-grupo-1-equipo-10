@@ -1,10 +1,10 @@
 package gestorAplicacion.servicio;
 
-import java.io.Serializable;
-import java.util.*;
 import gestorAplicacion.enrutadorWiMax.Router;
 import gestorAplicacion.entidadesServicios.Cliente;
 import gestorAplicacion.entidadesServicios.ProveedorInternet;
+import java.io.Serializable;
+import java.util.*;
 
 public class Factura implements Serializable {
 
@@ -35,7 +35,7 @@ public class Factura implements Serializable {
 	  
 	//METODO INSTANCIA---UTILIZADO PRINCIPALMENTE EN FUNCIONALIDAD VISUALIZAR DISPOSITIVOS
 	public boolean verificarFactura(Factura factura) {
-	    if(factura.getPagosAtrasados()>2){
+	    if(factura.getPagosAtrasados() > 2){
 	      return false;
 	    }else{
 	      return true;
