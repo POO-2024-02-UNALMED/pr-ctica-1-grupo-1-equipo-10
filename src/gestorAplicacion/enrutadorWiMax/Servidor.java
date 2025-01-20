@@ -2,6 +2,9 @@ package gestorAplicacion.enrutadorWiMax;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import gestorAplicacion.entidadesServicios.Cliente;
+import gestorAplicacion.entidadesServicios.ProveedorInternet;
+import gestorAplicacion.servicio.Plano;
 
 public class Servidor implements Red, Serializable{
 
@@ -31,6 +34,9 @@ public class Servidor implements Red, Serializable{
         FLUJO_RED_NETO=0;
   }
 
+  //Metodos
+
+
   public static ArrayList<Servidor> buscarServidores(String localidad) {
     ArrayList<Servidor> serviSede = new ArrayList<Servidor>();
     for (Servidor servidor : servidoresTotales) {
@@ -40,6 +46,8 @@ public class Servidor implements Red, Serializable{
     }
     return serviSede;
   }
+
+  // Interfas clase red
   
   public  ArrayList<Servidor> verificarAdmin(ArrayList<ProveedorInternet> proveedores, String nombre){
     ArrayList<Servidor> servidoresProveedor = new ArrayList<>();
@@ -56,5 +64,89 @@ public class Servidor implements Red, Serializable{
   }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  //METODO ESTATICO--FUNCIONALIDAD REPORTE--INSTANCIA UN OBJETO SERVIDOR ALEATORIO QUE SIRVE PARA INVOCAR EL MÉTODO VERIFICARADMIN DE ESTA CLASE
+  public static Servidor adminServidor(){
+    return new Servidor();
+  }
+
+  //GETTERS Y SETTERS
+
+  public String getSede() {
+    return sede;
+  }
+
+  public void setSede(String sede) {
+    this.sede = sede;
+  }
+
+  public double getPORCENTAJE_EFICIENCIA() {
+    return PORCENTAJE_EFICIENCIA;
+  }
+
+  public boolean isSaturado() {
+    return saturado;
+  }
+
+  public void setSaturado(boolean saturado) {
+    this.saturado = saturado;
+  }
+
+  public ProveedorInternet getProveedor() {
+    return proveedor;
+  }
+
+  public void setProveedor(ProveedorInternet proveedor) {
+    this.proveedor = proveedor;
+  }
+
+  public Plano getCoordenadas() {
+    return coordenadas;
+  }
+
+  public void setCoordenadas(Plano coordenadas) {
+    this.coordenadas = coordenadas;
+  }
+
+  public static ArrayList<Servidor> getServidoresTotales() {
+    return servidoresTotales;
+  }
+
+  public static void setServidoresTotales(ArrayList<Servidor> servidoresTotales) {
+    Servidor.servidoresTotales = servidoresTotales;
+  }
+
+  public ArrayList<Router> getRouters() {
+    return routers;
+  }
+
+  public void setRouters(ArrayList<Router> routers) {
+    this.routers = routers;
+  }
+
+  public int getINDICE_SATURACION() {
+    return INDICE_SATURACION;
+  }
+
+  public int getFLUJO_RED_NETO() {
+    return FLUJO_RED_NETO;
+  }
 
 }
