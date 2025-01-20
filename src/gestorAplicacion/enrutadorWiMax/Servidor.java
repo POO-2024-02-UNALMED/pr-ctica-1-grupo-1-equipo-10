@@ -62,25 +62,27 @@ public class Servidor implements Red, Serializable{
     }
     return servidoresProveedor;
   }
+  
+  //IMPLEMENTA METODO DE LA INTERFACE(RED)---FUNCIONALIDAD REPORTE-CALCULA LAS DISTANCIAS A LA QUE DEBERIA UBICARSE EL SERVIDOR PARA GENERAR UNA AMYOR INTENSIDAD DE FLUJO
+  public ArrayList<Integer> distanciasOptimas(ArrayList<Cliente> clientes, ArrayList<Integer> listaIntensidadesClientes){
+    ArrayList<Integer> distancias = new ArrayList<>();
+    for(int i=0; i<listaIntensidadesClientes.size(); i++){
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+      int distanciaOptima=0;
+      Router modem = clientes.get(i).getModem();
+      int velocidad = new Conexion(modem.getIP(), modem.getUp(),modem.getDown(),modem.isOnline(),modem.getGeneracion(),clientes.get(i),modem.getServidorAsociado()).getVelocidad();
+      int dispositivos=modem.verificarDispositivos(Dispositivo.getDispositivosTotales(), modem).size();
+      
+      if(dispositivos!=0){
+        distanciaOptima = (int)(modem.getServidorAsociado().getFLUJO_RED_NETO()+(velocidad/dispositivos)-(listaIntensidadesClientes.get(i)/modem.getServidorAsociado().getPORCENTAJE_EFICIENCIA()));
+      }else{
+        distanciaOptima = (int)(modem.getServidorAsociado().getFLUJO_RED_NETO()-(listaIntensidadesClientes.get(i)/modem.getServidorAsociado().getPORCENTAJE_EFICIENCIA()));
+      }
+      
+      distancias.add(distanciaOptima);
+    }
+    return distancias;
+  }
 
   //METODO ESTATICO--FUNCIONALIDAD REPORTE--INSTANCIA UN OBJETO SERVIDOR ALEATORIO QUE SIRVE PARA INVOCAR EL MÉTODO VERIFICARADMIN DE ESTA CLASE
   public static Servidor adminServidor(){

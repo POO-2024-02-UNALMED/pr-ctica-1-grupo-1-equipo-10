@@ -54,14 +54,9 @@ public class Antena extends Cobertura{
     return null;
   }
 
-
-
 // metodos que faltan el de cobertura 
 // el de el error 
 // y el tostring.
-
-
-
 
 
   public static void antenas(){
@@ -130,8 +125,6 @@ public class Antena extends Cobertura{
   }
 
 }
-
-
 
 
 
