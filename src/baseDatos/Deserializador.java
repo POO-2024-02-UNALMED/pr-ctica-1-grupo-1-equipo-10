@@ -1,11 +1,10 @@
 package baseDatos;
 
 import gestorAplicacion.enrutadorWiMax.*;
-
 import java.io.*;
 import java.util.*;
 
-public class Deserealizador {
+public class Deserializador {
     private static File rutaTemp = new File("src/baseDatos/temp");
 
     public static void deserializar(){

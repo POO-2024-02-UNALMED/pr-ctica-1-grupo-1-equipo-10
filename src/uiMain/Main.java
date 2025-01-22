@@ -1,11 +1,6 @@
 package uiMain;
 
-import java.util.*;
-
-import baseDatos.Deserializador;
 import baseDatos.Serializador;
-
-import java.awt.geom.*;
 import gestorAplicacion.enrutadorWiMax.Antena;
 import gestorAplicacion.enrutadorWiMax.Cobertura;
 import gestorAplicacion.enrutadorWiMax.Dispositivo;
@@ -14,8 +9,8 @@ import gestorAplicacion.enrutadorWiMax.Servidor;
 import gestorAplicacion.entidadesServicios.Cliente;
 import gestorAplicacion.entidadesServicios.ProveedorInternet;
 import gestorAplicacion.servicio.Factura;
-import gestorAplicacion.servicio.Plano;
 import gestorAplicacion.servicio.Mes;
+import java.util.*;
 
 public class Main {
 
@@ -723,8 +718,8 @@ public class Main {
                     System.out.println(resultado);
                     System.out.print("Lo anterior quiere decir que la generación de tu router es incompatible con la antena a la que estás conectado." +"\n");
                     System.out.println("Esta antena es compatible y accesible: ");
-                    System.out.println(clienteActual.getModem().getAntenaAsociada().rastrearGeneracionCompatible(antenasSede, clienteActual.getModem())); //SE OBTIENE LA ANTENA RECOMENDADA-CUARTO METODO DE LA FUNCIONALIDAD
-
+                    System.out.println(clienteActual.getModem().getAntenaAsociada().rastrearGeneracionCompatible(antenasSede, clienteActual.getModem())); 
+                    //SE OBTIENE LA ANTENA RECOMENDADA-CUARTO METODO DE LA FUNCIONALIDAD
                     System.out.println("Deseas cambiar a la nueva antena:" + "\n1.Si" + "\n2.No");
 
                     boolean Vcontrol11 = false;
@@ -963,3 +958,35 @@ public class Main {
                       }
 
                       break;
+
+                    } else { //NO SE ENCONTRARON ANOMALIAS
+                      System.out.print("El servidor funciona correctamente y proporciona las intensidades de flujo adecuadas.");
+                      Vcontrol1=false;
+                      break;
+                    }
+
+                  } else {
+                    System.out.print("Ingresa una opción válida." + "\n");
+                  }
+                }
+
+              } else { //NO RECONOCE AL ADMIN
+                System.out.println("Datos incorrectos, introdúcelos de nuevo");
+                System.out.println("Ingresa el nombre de tu compañía: ");
+                nombre = sc.nextLine().toLowerCase();
+              }
+            }
+
+            break;
+
+          case 6: //OPCION SALIR DEL PROGRAMA--SE REALIZA EL PROCESO DE SERIALIZACION
+            System.out.println("Ha sido un gusto servirte :D");
+            Serializador.serializar();
+            break;
+        }
+      } else {
+        System.out.println("Ingresa una opcion válida");
+      }
+    }
+  }
+}

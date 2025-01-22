@@ -54,9 +54,58 @@ public class Antena extends Cobertura{
     return null;
   }
 
-// metodos que faltan el de cobertura 
-// el de el error 
-// y el tostring.
+
+
+
+  //METODO INSTANCIA---IMPLEMENTACION Y SOBREESCRITURA METODO ABSTRACTO QUE SE HEREDA DE COBERTURA-FUNCIONALIDAD TEST--BUSCA UNA ANTENA EN LA QUE EL CLIENTE SE ENCUENTRE DENTRO DE SU ZONA DE COBERTURA Y LA GENERACION DE ESTA Y EL ROUTER SEAN LAS MISMAS
+  @Override
+  public Antena rastrearGeneracionCompatible(ArrayList<Antena> antenasSede, Router r){
+      
+     List<Antena> antenasCercanas=antenasSede.stream().filter(antenas -> antenas.verificarZonaCobertura(r,antenas)).collect(Collectors.toList());
+    ArrayList<Antena> antenaRecomendada=new ArrayList<Antena>();
+
+      Antena antenaEncontrada=antenasCercanas.stream().filter(antenas->antenas.getGeneracion()==r.getGeneracion()).findFirst().orElse(null);
+
+    if(antenaRecomendada!=null){
+      antenaRecomendada.add(antenaEncontrada);
+      return antenaRecomendada.get(0);
+    }else{
+      return null;
+    }
+  }
+    
+  
+  //METODO INSTANCIA---CALCULA SI LA UBICACION DEL ROUTER (COORDENADAS) SE ENCUENTRA DENTRO DE LA ZONA DE COBERTURA DE LA ANTENA--FUNCIONALIDAD TEST
+  public boolean verificarZonaCobertura(Router r,Antena a){
+      int rx = r.getCoordenadas().getX();
+      int ry = r.getCoordenadas().getY();
+      int radioAntena= (int)(((Ellipse2D.Double)a.getZonaCobertura()).getWidth())/2;
+      boolean  d=((int)Math.sqrt(Math.pow(rx - a.getCoordenadas().getX(), 2)+ Math.pow(ry - a.getCoordenadas().getY(), 2)))<=radioAntena;
+      return d;
+  }
+
+  //DEFINICIÓN DEL METODO ABSTRACTO QUE HEREDA DE COBERTURA--EVITAR ERRORES DE COMPILACION
+  @Override
+  public ArrayList<Integer> intensidadFlujoClientes(ArrayList<Cliente> ctes, Servidor servidor, boolean Reales){
+    return null; 
+  }
+
+  //DEFINICIÓN DEL METODO ABSTRACTO QUE HEREDA DE COBERTURA--EVITAR ERRORES DE COMPILACION
+  @Override
+  public ArrayList<Object> intensidadFlujoOptima(ArrayList<Servidor> ss,Cliente c){
+    return null;
+  }
+  
+  //SOBREESCRITURA DEL METODO TOSTRING HEREDADO DE COBERTURA
+  public String toString(){
+   return "Identificador: " + identificador + "\nSede: " + sede + " Ubicación: " + "(" + coordenadas.getX() + "," + coordenadas.getY() + ")" + " Generación: " + generacion;
+  }
+
+
+
+
+
+
 
 
   public static void antenas(){
@@ -125,6 +174,3 @@ public class Antena extends Cobertura{
   }
 
 }
-
-
-
