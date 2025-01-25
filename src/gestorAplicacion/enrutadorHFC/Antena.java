@@ -2,8 +2,8 @@ package gestorAplicacion.enrutadorHFC;
 
 import java.util.*;
 import java.util.stream.*;
-import gestorAplicacion.entidadesServicios.Cliente;
-import gestorAplicacion.entidadesServicios.ProveedorInternet;
+import gestorAplicacion.host.Cliente;
+import gestorAplicacion.host.ProveedorInternet;
 import gestorAplicacion.servicio.Plano;
 import java.awt.geom.*;
 

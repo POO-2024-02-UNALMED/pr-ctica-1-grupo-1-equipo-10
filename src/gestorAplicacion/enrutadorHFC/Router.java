@@ -1,7 +1,7 @@
 package gestorAplicacion.enrutadorHFC;
 
 import java.util.*;
-import gestorAplicacion.entidadesServicios.Cliente;
+import gestorAplicacion.host.Cliente;
 import gestorAplicacion.servicio.Plano;
 
 

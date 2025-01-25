@@ -1,8 +1,8 @@
 package gestorAplicacion.servicio;
 
 import gestorAplicacion.enrutadorHFC.Router;
-import gestorAplicacion.entidadesServicios.Cliente;
-import gestorAplicacion.entidadesServicios.ProveedorInternet;
+import gestorAplicacion.host.Cliente;
+import gestorAplicacion.host.ProveedorInternet;
 import java.io.Serializable;
 import java.util.*;
 

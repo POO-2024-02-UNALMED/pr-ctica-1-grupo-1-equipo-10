@@ -1,7 +1,7 @@
 package gestorAplicacion.enrutadorHFC;
 
-import gestorAplicacion.entidadesServicios.Cliente;
-import gestorAplicacion.entidadesServicios.ProveedorInternet;
+import gestorAplicacion.host.Cliente;
+import gestorAplicacion.host.ProveedorInternet;
 import java.util.ArrayList;
 
 interface Red{

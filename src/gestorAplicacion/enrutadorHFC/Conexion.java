@@ -1,6 +1,6 @@
 package gestorAplicacion.enrutadorHFC;
 
-import gestorAplicacion.entidadesServicios.Cliente;
+import gestorAplicacion.host.Cliente;
 
 public class Conexion extends Router{
 

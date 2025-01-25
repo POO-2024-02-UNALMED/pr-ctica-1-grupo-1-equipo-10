@@ -2,8 +2,8 @@ package gestorAplicacion.enrutadorHFC;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import gestorAplicacion.entidadesServicios.Cliente;
-import gestorAplicacion.entidadesServicios.ProveedorInternet;
+import gestorAplicacion.host.Cliente;
+import gestorAplicacion.host.ProveedorInternet;
 import gestorAplicacion.servicio.Plano;
 
 public class Servidor implements Red, Serializable{

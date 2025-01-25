@@ -1,4 +1,4 @@
-package gestorAplicacion.entidadesServicios;
+package gestorAplicacion.host;
 
 import java.io.Serializable;
 import java.util.*;

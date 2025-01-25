@@ -1,6 +1,6 @@
 package gestorAplicacion.enrutadorHFC;
 
-import gestorAplicacion.entidadesServicios.Cliente;
+import gestorAplicacion.host.Cliente;
 import java.io.Serializable;
 import java.util.ArrayList;
 
