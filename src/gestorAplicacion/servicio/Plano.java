@@ -1,17 +1,18 @@
 package gestorAplicacion.servicio;
 
 import java.awt.geom.*;
+import java.io.Serializable;
 
-public class Plano {
-    private int coorX;
-    private int coorY;
+public class Plano implements Serializable{
+    private int y;
+    private int x;
     private Rectangle2D sede;
     private Ellipse2D zonaCobertura;
     private static Rectangle2D cuadrante;
 
     public Plano(int coorX, int coorY){
-        this.coorX = coorX;
-        this.coorY = coorY;
+        this.x = coorX;
+        this.y = coorY;
         cuadrante = new Rectangle2D.Double(0, 100, 100, 100);
     }
 
@@ -30,19 +31,19 @@ public class Plano {
     }
 
     public int getY() {
-        return coorY;
+        return y;
     }
     
     public void setY(int y) {
-        this.coorY = y;
+        this.y = y;
     }
     
     public int getX() {
-        return coorX;
+        return x;
     }
     
     public void setX(int x) {
-        this.coorX = x;
+        this.x = x;
     }
     
     public Rectangle2D getSede() {

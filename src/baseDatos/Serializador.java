@@ -16,7 +16,9 @@ public class Serializador {
 
     public static void serializar(){ 
 
-        listaDeListas.add(Antena.getAntenasTotales()); listaDeListas.add(Dispositivo.getDispositivosTotales()); listaDeListas.add(Servidor.getServidoresTotales());
+        listaDeListas.add(Antena.getAntenasTotales()); 
+        listaDeListas.add(Dispositivo.getDispositivosTotales()); 
+        listaDeListas.add(Servidor.getServidoresTotales());
         
         FileOutputStream file;
         ObjectOutputStream output;

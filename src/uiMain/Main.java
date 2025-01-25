@@ -1,5 +1,6 @@
 package uiMain;
 
+import baseDatos.Deserializador;
 import baseDatos.Serializador;
 import gestorAplicacion.enrutadorWiMax.Antena;
 import gestorAplicacion.enrutadorWiMax.Cobertura;
@@ -14,6 +15,11 @@ import java.util.*;
 
 public class Main {
 
+  static {
+   Deserializador.deserializar();
+   ProveedorInternet.proveedores(); //SE AÑADEN LOS PROVEEDORES ADECUADOS AL ARREGLO PROVEEDORESTOTALES DE LA CLASE PROVEEDORINTERNET
+   Antena.antenas(); //SE REASIGNAN LOS PROVEEDORES ASOCIADOS A LAS ANTENAS
+  }
     
   public static void main(String[] args) {
 

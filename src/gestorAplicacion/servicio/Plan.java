@@ -1,8 +1,9 @@
 package gestorAplicacion.servicio;
 
+import java.io.Serializable;
 import java.util.*;
 
-public class Plan {
+public class Plan implements Serializable{
     private final ArrayList<Integer> BASIC;
     private final ArrayList<Integer> STANDARD;
     private final ArrayList<Integer> PREMIUM;

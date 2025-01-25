@@ -99,7 +99,7 @@ public class Factura implements Serializable {
 	    ip=cliente.getModem().getIP();  
 	    pagosAtrasados=0;
 		precio= precioplan;
-      	mesActivacion=Mes.MAYO;
+      	mesActivacion=Mes.ENERO;
 	    cliente.setFactura(this);
 	    return this;  
 	}

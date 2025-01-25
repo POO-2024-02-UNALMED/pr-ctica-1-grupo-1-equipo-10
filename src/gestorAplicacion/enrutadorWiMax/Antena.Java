@@ -2,13 +2,12 @@ package gestorAplicacion.enrutadorWiMax;
 
 import java.util.*;
 import java.util.stream.*;
-import gestorAplicacion.host.Cliente;
-import gestorAplicacion.host.ProveedorInternet;
+import gestorAplicacion.entidadesServicios.Cliente;
+import gestorAplicacion.entidadesServicios.ProveedorInternet;
 import gestorAplicacion.servicio.Plano;
 import java.awt.geom.*;
 
-public class Antena extends Cobertura{
-
+public class Antena extends Cobertura {
     private int identificador;
     private Point2D coordenadas;
     private String sede;
