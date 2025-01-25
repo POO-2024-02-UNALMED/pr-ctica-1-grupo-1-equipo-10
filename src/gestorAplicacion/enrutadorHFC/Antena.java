@@ -7,14 +7,18 @@ import gestorAplicacion.host.ProveedorInternet;
 import gestorAplicacion.servicio.Plano;
 import java.awt.geom.*;
 
-public class Antena extends Cobertura {
-    private int identificador;
-    private Point2D coordenadas;
-    private String sede;
-    private Ellipse2D zonaCobertura;
-    private ProveedorInternet proveedor;
-    private static ArrayList<Antena> antenasTotales = new ArrayList<>(); 
+public class Antena extends Cobertura{
 
+  //ESTA CLASE ES USADA PRINCIPALMENTE EN LA FUNCIONALIDAD DEL TEST, DONDE SE LE RECOMIENDA AL CLIENTE CAMBIARSE DE ANTENA
+
+  //ATRIBUTOS
+  private int identificador;
+  private Point2D coordenadas;
+  private String sede;
+  private Ellipse2D zonaCobertura;
+  private ProveedorInternet proveedor;
+  private static ArrayList<Antena> antenasTotales = new ArrayList<>(); 
+  
 
   //CONSTRUCTORES
   public Antena(int identificador, Plano coordenadas,String sede, int generacion, int radio, ProveedorInternet proveedor){
@@ -52,9 +56,6 @@ public class Antena extends Cobertura {
     }
     return null;
   }
-
-
-
 
   //METODO INSTANCIA---IMPLEMENTACION Y SOBREESCRITURA METODO ABSTRACTO QUE SE HEREDA DE COBERTURA-FUNCIONALIDAD TEST--BUSCA UNA ANTENA EN LA QUE EL CLIENTE SE ENCUENTRE DENTRO DE SU ZONA DE COBERTURA Y LA GENERACION DE ESTA Y EL ROUTER SEAN LAS MISMAS
   @Override
@@ -101,12 +102,7 @@ public class Antena extends Cobertura {
   }
 
 
-
-
-
-
-
-
+  //METODO ESTATICO QUE A LA HORA DE DESERIALIZAR SE ENCARGA DE RESETEAR LOS PROVEEDORES PARA QUE NO HAYAN PROBLEMAS POR LAS REFERENCIAS A LOS OBJETOS DESPUÉS DE SERIALIZAR
   public static void antenas(){
 
     for(Antena antena: Antena.getAntenasTotales()){
@@ -123,6 +119,7 @@ public class Antena extends Cobertura {
     }
   }
 
+  //GETTERS Y SETTERS
 
   public int getIdentificador() {
     return identificador;

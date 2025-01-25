@@ -1,10 +1,14 @@
 package baseDatos;
 
 import gestorAplicacion.enrutadorHFC.*;
+
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
 import java.io.*;
 import java.util.*;
 
-public class Deserializador {
+public class Deserializador{
+
     private static File rutaTemp = new File("src/baseDatos/temp");
 
     public static void deserializar(){

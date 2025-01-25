@@ -35,7 +35,7 @@ public class Factura implements Serializable {
 	  
 	//METODO INSTANCIA---UTILIZADO PRINCIPALMENTE EN FUNCIONALIDAD VISUALIZAR DISPOSITIVOS
 	public boolean verificarFactura(Factura factura) {
-	    if(factura.getPagosAtrasados() > 2){
+	    if(factura.getPagosAtrasados()>2){
 	      return false;
 	    }else{
 	      return true;

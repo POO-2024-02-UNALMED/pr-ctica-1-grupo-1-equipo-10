@@ -1,18 +1,25 @@
 package gestorAplicacion.enrutadorHFC;
 
-import gestorAplicacion.host.Cliente;
 import java.io.Serializable;
 import java.util.ArrayList;
+import gestorAplicacion.host.Cliente;
 
-public abstract class Cobertura implements Serializable {
-
+public abstract class Cobertura implements Serializable{
+  
+  //ATRIBUTOS
   protected int generacion;
   protected int intensidadFlujo;
 
-  protected  Cobertura(int g){
-    generacion=g;
-}
-//METODO UTILIZADO PRINCIPALMENTE POR LA CLASE ANTENA--FUNCIONALIDAD DEL TEST
+  //CONSTRUCTOR
+  protected Cobertura(int g){
+    generacion=g; 
+  } 
+
+  //METODOS 
+
+  //METODOS ABSTRACTOS
+
+  //METODO UTILIZADO PRINCIPALMENTE POR LA CLASE ANTENA--FUNCIONALIDAD DEL TEST
   public abstract Antena rastrearGeneracionCompatible(ArrayList<Antena> antenasSede, Router r);
 
   //METODO UTILIZADO PRINCIPALMENTE POR LA CLASE ROUTER--FUNCIONALIDAD MEJORA TU PLAN

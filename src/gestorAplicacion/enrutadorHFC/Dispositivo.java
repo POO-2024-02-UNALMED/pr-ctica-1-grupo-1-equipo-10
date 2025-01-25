@@ -1,25 +1,32 @@
 package gestorAplicacion.enrutadorHFC;
 
 import gestorAplicacion.host.Cliente;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Dispositivo implements Serializable{
 
+	//CLASE IMPORTANTE PARA LA FUNCIONALIDAD DE VISUALIZAR DISPOSITIVOS, SIN EMBARGO TAMBIÉN TIENE IMPLICACIONES EN OTRAS EN PROCESOS SECUNDARIOS (TEST--REPORTE--MEJORA TU PLAN)
+
+	//ATRIBUTOS
 	private Router modem;
 	private String ipAsociada;
 	private String nombre;
   	private String generacion;
 	private static ArrayList<Dispositivo> dispositivosTotales = new ArrayList<>();
+  
 
+	//CONSTRUCTORS
 	public Dispositivo(Router modem,String nombre,String generacion) {
 	    this.modem = modem;
 	    this.nombre = nombre;
-		ipAsociada=this.modem.getIP();
+	    ipAsociada=this.modem.getIP();
       	this.generacion=generacion;
-		dispositivosTotales.add(this);
+      	dispositivosTotales.add(this);
 	}
-	//MÉTODOS
+
+    //MÉTODOS
 
     //METODO DE ESTATICO---FUNCIONALIDAD TEST
 	public static String desconectarDispositivo(Cliente cliente,Dispositivo dispositivo) {
@@ -35,6 +42,7 @@ public class Dispositivo implements Serializable{
 	public String toString() {
 		return "Dispositivo: "+ this.nombre + "\nDirección IP: "+ this.ipAsociada+"\nGeneración: "+this.generacion;
 	}
+
 
 	//GETTERS Y SETTERS
 	public Router getModem() {

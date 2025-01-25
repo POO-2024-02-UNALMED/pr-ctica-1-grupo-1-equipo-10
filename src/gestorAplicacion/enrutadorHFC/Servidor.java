@@ -8,35 +8,46 @@ import gestorAplicacion.servicio.Plano;
 
 public class Servidor implements Red, Serializable{
 
-  // Mejora tu plan y reporte lo usan 
+  //CLASE FUNDAMENTAL PARA LA IMPLEMENTACION DE LA FUNCIONALIDAD MEJORA TU PLAN Y REPORTE
 
-    private String sede;
-    private final double PORCENTAJE_EFICIENCIA;
-    private boolean saturado = false;
-    private ProveedorInternet proveedor;
-    private Plano coordenadas;  
-    private static ArrayList<Servidor> servidoresTotales = new ArrayList<>();
-    private ArrayList<Router> routers = new ArrayList<>();
-    private final int INDICE_SATURACION; //Numero de clientes que puede tener el servidor 
-    private final int FLUJO_RED_NETO; // Lo que le resta a el servidor 
+  //ATRIBUTOS
+  private String sede;
+  private final double PORCENTAJE_EFICIENCIA; //HACE REFERENCIA A QUÉ TAN BUENO ES EL SERVIDOR
+  private boolean saturado = false;
+  private ProveedorInternet proveedor;
+  private Plano coordenadas;  
+  private static ArrayList<Servidor> servidoresTotales = new ArrayList<>();
+  private ArrayList<Router> routers = new ArrayList<>();
+  private final int INDICE_SATURACION; //NUMERO MAX DE CLIENTES QUE PUEDE TENER UN SERVIDOR
+  private final int FLUJO_RED_NETO; //ES EL FLUJO QUE LE QUEDA AL SERVIDOR
 
-
-    public Servidor(boolean saturado, int INDICE_SATURACION, double pe){
-        this.saturado=saturado;
-        this.INDICE_SATURACION=INDICE_SATURACION;
-        PORCENTAJE_EFICIENCIA = pe;
-        this.FLUJO_RED_NETO=(int)(PORCENTAJE_EFICIENCIA*FLUJO_RED_PRELIMINAR);
-        servidoresTotales.add(this);
-  }
-    public Servidor(){
-        INDICE_SATURACION=0;
-        PORCENTAJE_EFICIENCIA = 0;
-        FLUJO_RED_NETO=0;
+  //CONSTRUCTORES
+  public Servidor(String sede, boolean saturado, ProveedorInternet proveedor, Plano coordenadas, int indice, double pe) {
+    this(saturado,indice,pe);
+    this.sede = sede;
+    this.proveedor = proveedor;
+    this.coordenadas = coordenadas;
+    
   }
 
-  //Metodos
+  public Servidor(boolean saturado, int INDICE_SATURACION, double pe){
+    this.saturado=saturado;
+    this.INDICE_SATURACION=INDICE_SATURACION;
+    PORCENTAJE_EFICIENCIA = pe;
+    this.FLUJO_RED_NETO=(int)(PORCENTAJE_EFICIENCIA*FLUJO_RED_PRELIMINAR);
+    servidoresTotales.add(this);
+  }
 
+  public Servidor(){
+    INDICE_SATURACION=0;
+    PORCENTAJE_EFICIENCIA = 0;
+    FLUJO_RED_NETO=0;
+  }
 
+  
+  // METODOS
+  
+  //METODO ESTATICO---FUNCIONALIDAD MEJORA TU PLAN--BUSCA Y RETORNA TODOS LOS SERVIDORES QUE EXISTAN EN UNA SEDE EN ESPECIFICO
   public static ArrayList<Servidor> buscarServidores(String localidad) {
     ArrayList<Servidor> serviSede = new ArrayList<Servidor>();
     for (Servidor servidor : servidoresTotales) {
@@ -47,8 +58,8 @@ public class Servidor implements Red, Serializable{
     return serviSede;
   }
 
-  // Interfas clase red
-  
+
+  //IMPLEMENTA EL METODO DE LA INTERFACE(RED)--FUNCIONALIDAD REPORTE--VERIFICA ADMIN Y RETORNA SERVIDORES DE UN PROVEEDOR EN TODAS LAS LOCALIDADES
   public  ArrayList<Servidor> verificarAdmin(ArrayList<ProveedorInternet> proveedores, String nombre){
     ArrayList<Servidor> servidoresProveedor = new ArrayList<>();
     for(ProveedorInternet proveedor: proveedores){

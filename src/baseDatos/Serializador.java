@@ -11,14 +11,13 @@ import gestorAplicacion.enrutadorHFC.*;
 import java.util.*;
 
 public class Serializador {
+
     static ArrayList<ArrayList<?>>  listaDeListas = new ArrayList<ArrayList<?>>();
     private static File rutaTemp = new File("src/baseDatos/temp");
 
     public static void serializar(){ 
 
-        listaDeListas.add(Antena.getAntenasTotales()); 
-        listaDeListas.add(Dispositivo.getDispositivosTotales()); 
-        listaDeListas.add(Servidor.getServidoresTotales());
+        listaDeListas.add(Antena.getAntenasTotales()); listaDeListas.add(Dispositivo.getDispositivosTotales()); listaDeListas.add(Servidor.getServidoresTotales());
         
         FileOutputStream file;
         ObjectOutputStream output;
@@ -51,4 +50,3 @@ public class Serializador {
         } 
     } 
 }
-

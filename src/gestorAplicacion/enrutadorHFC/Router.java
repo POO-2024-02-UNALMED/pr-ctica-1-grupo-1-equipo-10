@@ -1,25 +1,27 @@
 package gestorAplicacion.enrutadorHFC;
-
 import java.util.*;
+
 import gestorAplicacion.host.Cliente;
 import gestorAplicacion.servicio.Plano;
 
-
 public class Router extends Cobertura {
-    private final String IP;
-    private int up;
-    private int down;
-    private boolean online;
-    private int ping;
-    private Plano coordenadas;
-    private Servidor servidorAsociado;
-    private Antena antenaAsociada;
-    private String sede;
-    private int velocidad;
 
+  //ESTA CLASE ES UNA DE LAS PRINCIPALES DADO QUE ESTABLECE LA RELACIÓN ENTRE CLIENTE-PROVEEDOR Y ES UTILIZADA EN TODAS LAS FUNCIONALIDADES
 
+  //ATRIBUTOS
+  private final String IP;
+  private int up;
+  private int down;
+  private boolean online;
+  private int ping;
+  private Plano coordenadas; 
+  private Servidor servidorAsociado;
+  private Antena antenaAsociada;
+  private String sede;
+  private int velocidad;
 
-    public Router(int up, int down, boolean online, Servidor servidorAsociado) {
+  //CONSTRUCTORES
+  public Router(int up, int down, boolean online, Servidor servidorAsociado) {
     
     super(3);
     Random random = new Random();
@@ -65,9 +67,10 @@ public class Router extends Cobertura {
     IP="";
     velocidad=250;
   }
-  
+
   //METODOS
 
+  //METODO DE INSTANCIA---FUNCIONALIDAD TEST-- SE ENCARGA DE ACTUALIZAR LAS MEGAS DEL CLIENTE DE ACUERDO CON LOS DISPOSITIVOS Y SI EL CLIENTE SE ENCUENTRA DENTRO O NO DE LA ZONA DE COBERTURA DE LA ANTENA QUE TIENE ASOCIADA
   public ArrayList<Integer> actualizarVelocidad(Cliente cliente) {
     int megasUp = cliente.getPlan().get(0);
     int megasDown = cliente.getPlan().get(1);
@@ -367,18 +370,6 @@ public class Router extends Cobertura {
     return new Router();
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
   //SETTERS Y GETTERS
 
   public String getIP() {
@@ -457,5 +448,4 @@ public class Router extends Cobertura {
     this.velocidad = velocidad;
   }
   
-
 }
