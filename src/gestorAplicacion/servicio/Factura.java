@@ -1,6 +1,6 @@
 package gestorAplicacion.servicio;
 
-import gestorAplicacion.enrutadorWiMax.Router;
+import gestorAplicacion.enrutadorHFC.Router;
 import gestorAplicacion.entidadesServicios.Cliente;
 import gestorAplicacion.entidadesServicios.ProveedorInternet;
 import java.io.Serializable;

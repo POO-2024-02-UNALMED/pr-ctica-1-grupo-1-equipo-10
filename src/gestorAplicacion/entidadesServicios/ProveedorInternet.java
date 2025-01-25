@@ -2,9 +2,9 @@ package gestorAplicacion.entidadesServicios;
 
 import java.io.Serializable;
 import java.util.*;
-import gestorAplicacion.enrutadorWiMax.Servidor;
+import gestorAplicacion.enrutadorHFC.Servidor;
 import gestorAplicacion.servicio.Plan;
-import gestorAplicacion.enrutadorWiMax.Dispositivo;
+import gestorAplicacion.enrutadorHFC.Dispositivo;
 
 //CLASE IMPORTANTE (SE RELACIONA CON EL CLIENTE), ATRIBUTOS
 public class ProveedorInternet implements Serializable {

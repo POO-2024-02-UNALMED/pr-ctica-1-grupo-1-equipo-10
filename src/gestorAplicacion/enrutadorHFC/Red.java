@@ -1,4 +1,4 @@
-package gestorAplicacion.enrutadorWiMax;
+package gestorAplicacion.enrutadorHFC;
 
 import gestorAplicacion.entidadesServicios.Cliente;
 import gestorAplicacion.entidadesServicios.ProveedorInternet;

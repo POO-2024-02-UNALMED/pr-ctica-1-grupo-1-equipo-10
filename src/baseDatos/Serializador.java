@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.io.File;
-import gestorAplicacion.enrutadorWiMax.*;
+import gestorAplicacion.enrutadorHFC.*;
 
 import java.util.*;
 

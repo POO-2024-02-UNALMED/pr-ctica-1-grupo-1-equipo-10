@@ -1,6 +1,6 @@
 package baseDatos;
 
-import gestorAplicacion.enrutadorWiMax.*;
+import gestorAplicacion.enrutadorHFC.*;
 import java.io.*;
 import java.util.*;
 

@@ -2,11 +2,11 @@ package gestorAplicacion.entidadesServicios;
 
 import java.io.Serializable;
 import java.util.*;
-import gestorAplicacion.enrutadorWiMax.Router;
-import gestorAplicacion.enrutadorWiMax.Servidor;
+import gestorAplicacion.enrutadorHFC.Router;
+import gestorAplicacion.enrutadorHFC.Servidor;
 import gestorAplicacion.servicio.Factura;
 import gestorAplicacion.servicio.Plano;
-import gestorAplicacion.enrutadorWiMax.Antena;
+import gestorAplicacion.enrutadorHFC.Antena;
 
 //CLASE PRINCIPAL (LAS FUNCIONALIDADES SE ORIENTAN HACIA LOS CLIENTES), ATRIBUTOS
 public class Cliente implements Serializable {
