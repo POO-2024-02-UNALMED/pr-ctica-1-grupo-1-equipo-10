@@ -1,3 +1,7 @@
+// Maria Jose Monroy Mejia
+// Valeria Moreno Rojas
+// Justin Camilo Loaiza Lujan
+
 package gestorAplicacion.enrutadorHFC;
 
 import java.io.Serializable;
@@ -58,23 +62,14 @@ public class Servidor implements Red, Serializable{
     return serviSede;
   }
 
-
-  //IMPLEMENTA EL METODO DE LA INTERFACE(RED)--FUNCIONALIDAD REPORTE--VERIFICA ADMIN Y RETORNA SERVIDORES DE UN PROVEEDOR EN TODAS LAS LOCALIDADES
-  public  ArrayList<Servidor> verificarAdmin(ArrayList<ProveedorInternet> proveedores, String nombre){
-    ArrayList<Servidor> servidoresProveedor = new ArrayList<>();
-    for(ProveedorInternet proveedor: proveedores){
-      if(proveedor.getNombre().equals(nombre)){
-        for(Servidor servidor: servidoresTotales){
-          if(servidor.getProveedor().getNombre().equals(nombre)){
-            servidoresProveedor.add(servidor);
-          }
-        }
-      }
+  //IMPLEMENTA AL METODO POR DEFECTO DE LA INTERFACE(RED)
+  @Override
+    public ArrayList<Servidor> verificarAdmin(ArrayList<ProveedorInternet> proveedores, String nombre) {
+        return Red.super.verificarAdmin(proveedores, nombre); 
     }
-    return servidoresProveedor;
-  }
   
   //IMPLEMENTA METODO DE LA INTERFACE(RED)---FUNCIONALIDAD REPORTE-CALCULA LAS DISTANCIAS A LA QUE DEBERIA UBICARSE EL SERVIDOR PARA GENERAR UNA AMYOR INTENSIDAD DE FLUJO
+  @Override
   public ArrayList<Integer> distanciasOptimas(ArrayList<Cliente> clientes, ArrayList<Integer> listaIntensidadesClientes){
     ArrayList<Integer> distancias = new ArrayList<>();
     for(int i=0; i<listaIntensidadesClientes.size(); i++){

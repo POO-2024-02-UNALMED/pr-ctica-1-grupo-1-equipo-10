@@ -1,3 +1,7 @@
+// Maria Jose Monroy Mejia
+// Valeria Moreno Rojas
+// Justin Camilo Loaiza Lujan
+
 package uiMain;
 
 import baseDatos.Deserializador;
@@ -5,6 +9,7 @@ import baseDatos.Serializador;
 import gestorAplicacion.enrutadorHFC.Antena;
 import gestorAplicacion.enrutadorHFC.Cobertura;
 import gestorAplicacion.enrutadorHFC.Dispositivo;
+import gestorAplicacion.enrutadorHFC.Red;
 import gestorAplicacion.enrutadorHFC.Router;
 import gestorAplicacion.enrutadorHFC.Servidor;
 import gestorAplicacion.host.Cliente;
@@ -14,6 +19,7 @@ import gestorAplicacion.servicio.Mes;
 import java.util.*;
 import java.util.stream.IntStream;
 
+// CLASE DONDE SE ENCUENTRA EL METODO MAIN
 public class Main {
 
   static {
@@ -952,9 +958,9 @@ public class Main {
                     // SE REALIZAN LAS COMPARACIONES-SE OBTIENEN LOS PROMEDIOS DE DICHAS INTENSIDADES
 
                     //PROMEDIO INTENSIDADES REALES
-                    int PromedioBasic = (intensidadBasic.stream().mapToInt(Integer::intValue).sum()) / intensidadBasic.size();
-                    int PromedioStandard = (intensidadStandard.stream().mapToInt(Integer::intValue).sum()) /intensidadStandard.size();
-                    int PromedioPremium = (intensidadPremium.stream().mapToInt(Integer::intValue).sum()) / intensidadPremium.size();
+                    int PromedioBasic = Red.calcularPromedioIntensidad(intensidadBasic); //LIGADURA ESTATICA
+                    int PromedioStandard =  Red.calcularPromedioIntensidad(intensidadStandard); //LIGADURA ESTATICA
+                    int PromedioPremium =  Red.calcularPromedioIntensidad(intensidadPremium); //LIGADURA ESTATICA
 
                     //PROMEDIO INTENSIDADES ADECUADAS
                     int PromedioB = (intensidadB.stream().mapToInt(Integer::intValue).sum()) / intensidadB.size();
@@ -964,7 +970,7 @@ public class Main {
                     if ((PromedioBasic < PromedioB) || (PromedioStandard < PromedioS) || (PromedioPremium < PromedioP)) { //SE COMPRUEBA SI ALGUN PROMEDIO DE LAS INTENSIDADES REALES ES MENOR A LAS ADECUADAS
 
                       //SE REALIZA EL REPORTE
-                      System.out.print("De acuerdo con el análisis realizado al servidor de la sede " + servidorLocalidad.getSede()+ " se hallaron errores en el servidor, a continuación se presentan las recomendaciones y el reporte.");
+                      System.out.print("De acuerdo con el análisis realizado al servidor de la sede " + servidorLocalidad.getSede()+ " se hallaron errores en el servidor;\na continuación se presentan las recomendaciones y el reporte.");
 
                       //SE CALCULAN LAS DISTANCIAS PROMEDIOS A LAS QUE DEBERIA ENCONTRARSE EL SERVIDOR DE SUS CLIENTES
                       //DISTANCIAS OPTIMAS POR PLAN
@@ -979,18 +985,18 @@ public class Main {
 
                       //SE PRESENTA EL REPORTE
                       System.out.println("\nREPORTE" + "\nIntensidades:"
-                          + "\nSe encontraron diferencias entre las intensidades netas y las que se deberían registrar. Para ello, se clasificaron las intensidades por planes y de esta manera identificar el plan más afectado."
+                          + "\nSe encontraron diferencias entre las intensidades netas y las que se deberían registrar.\nPara ello, se clasificaron las intensidades por planes y de esta manera identificar el plan más afectado."
                           + "\nPLAN BASIC" + "\nIntensidad de Flujo Promedio Neta: " + PromedioBasic
                           + "\nIntensidad de Flujo Promedio Adecuado: " + PromedioB + "\nPLAN STANDARD"
                           + "\nIntensidad de Flujo Promedio Neta: " + PromedioStandard
                           + "\nIntensidad de Flujo Promedio Adecuada: " + PromedioS + "\nPLAN PREMIUM"
                           + "\nIntensidad de Flujo Promedio Neta: " + PromedioPremium
                           + "\nIntensidad de Flujo Promedio Adecuada: " + PromedioP
-                          + "\nLas intensidades dependen en gran medida de las distancias entre el router de los clientes y el servidor, por ello se recomienda cambiar la ubicación de este último. A continuación, se presentan las distancias promedios recomendadas a las cuales debe estar el servidor para que proporcione la intensidad de flujo adecuada en cada plan."
+                          + "\nLas intensidades dependen en gran medida de las distancias entre el router de los clientes y el servidor,\npor ello se recomienda cambiar la ubicación de este último.\nA continuación, se presentan las distancias promedios recomendadas a las cuales debe estar el servidor\npara que proporcione la intensidad de flujo adecuada en cada plan."
                           + "\nDISTANCIAS ÓPTIMAS" + "\nDistancia Promedio-Plan Basic: " + PromedioDB + " metros."
                           + "\nDistancia Promedio-Plan Standard: " + PromedioDS + " metros." + "\nDistancia Promedio-Plan Premium: "
                           + PromedioDP + " metros."
-                          + "\nFinalmente, las intensidades de flujo reales están afectadas por el porcentaje de eficiencia del servidor, esto indica que el servidor está consumiendo una cantidad significativa del flujo de red inicial que le proporciona el proveedor. Por ende, se recomienda cambiarlo o en su defecto, implementar la solución de las distancias, expuesta anteriormente.");
+                          + "\nFinalmente, las intensidades de flujo reales están afectadas por el porcentaje de eficiencia del servidor,\nesto indica que el servidor está consumiendo una cantidad significativa\ndel flujo de red inicial que le proporciona el proveedor. Por ende, se recomienda cambiarlo o en su defecto,\nimplementar la solución de las distancias, expuesta anteriormente.");
 
                       if (servidorLocalidad.getRouters().size() == servidorLocalidad.getINDICE_SATURACION()) { //SI EL SERVIDOR ESTÁ SATURADO, SE INDICA POR CONSOLA
                         servidorLocalidad.setSaturado(true);

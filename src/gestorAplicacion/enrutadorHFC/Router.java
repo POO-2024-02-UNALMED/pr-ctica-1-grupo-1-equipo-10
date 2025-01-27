@@ -1,3 +1,7 @@
+// Maria Jose Monroy Mejia
+// Valeria Moreno Rojas
+// Justin Camilo Loaiza Lujan
+
 package gestorAplicacion.enrutadorHFC;
 import java.util.*;
 

@@ -1,8 +1,12 @@
+// Maria Jose Monroy Mejia
+// Valeria Moreno Rojas
+// Justin Camilo Loaiza Lujan
+
 package gestorAplicacion.enrutadorHFC;
 
+import gestorAplicacion.host.Cliente;
 import java.io.Serializable;
 import java.util.ArrayList;
-import gestorAplicacion.host.Cliente;
 
 public abstract class Cobertura implements Serializable{
   
@@ -19,13 +23,13 @@ public abstract class Cobertura implements Serializable{
 
   //METODOS ABSTRACTOS
 
-  //METODO UTILIZADO PRINCIPALMENTE POR LA CLASE ANTENA--FUNCIONALIDAD DEL TEST
+  //METODO UTILIZADO EN SU MAYORIA POR LA CLASE ANTENA PARA LA FUNCIONALIDAD DEL TEST
   public abstract Antena rastrearGeneracionCompatible(ArrayList<Antena> antenasSede, Router r);
 
-  //METODO UTILIZADO PRINCIPALMENTE POR LA CLASE ROUTER--FUNCIONALIDAD MEJORA TU PLAN
+  //METODO UTILIZADO EN SU MAYORIA POR LA CLASE ROUTER PARA LA FUNCIONALIDAD MEJORA TU PLAN
   public abstract ArrayList<Object> intensidadFlujoOptima(ArrayList<Servidor> ss,Cliente c);
   
-  //METODO UTILIZADO PRINCIPALMENTE POR LA CLASE ROUTER--FUNCIONALIDAD REPORTE
+  //METODO UTILIZADO EN SU MAYORIA POR LA CLASE ROUTER PARA LA FUNCIONALIDAD REPORTE
   public abstract ArrayList<Integer> intensidadFlujoClientes(ArrayList<Cliente> ctes, Servidor servidor, boolean Reales);
 
   //METODO TOSTRING

@@ -1,3 +1,7 @@
+// Maria Jose Monroy Mejia
+// Valeria Moreno Rojas
+// Justin Camilo Loaiza Lujan
+
 package gestorAplicacion.enrutadorHFC;
 
 import java.util.*;
@@ -9,7 +13,7 @@ import java.awt.geom.*;
 
 public class Antena extends Cobertura{
 
-  //ESTA CLASE ES USADA PRINCIPALMENTE EN LA FUNCIONALIDAD DEL TEST, DONDE SE LE RECOMIENDA AL CLIENTE CAMBIARSE DE ANTENA
+  //ESTA CLASE SE USA PRINCIPALMENTE EN LA FUNCIONALIDAD DEL TEST, DONDE SE RECOMIENDA AL CLIENTE CAMBIAR DE ANTENA
 
   //ATRIBUTOS
   private int identificador;
@@ -33,7 +37,7 @@ public class Antena extends Cobertura{
 
   //METODOS
 
-  //METODO INSTANCIA---BUSCA LAS ANTENAS QUE PERTENECEN A UNA SEDE EN ESPECIFICO-FUNCIONALIDAD TEST
+  //METODO INSTANCIA---BUSCA LAS ANTENAS PERTENECIENTES A UNA SEDE EN ESPECIFICO PARA LA FUNCIONALIDAD TEST
   public static ArrayList<Antena> antenasSede(String sede){
     ArrayList<Antena> antenas = new ArrayList<>();
     for(Antena antena: antenasTotales){
@@ -44,7 +48,8 @@ public class Antena extends Cobertura{
     return antenas;
   }
 
-  //METODO INSTANCIA---BUSCA LAS ANTENAS QUE ESTAN EN UNA SEDE Y QUE PERTENECEN A UN PROVEEDOR ESPECIFICO--FUNCIONALIDAD MEJORA TU PLAN (PARA SETEAR UNA ANTENA DEL PROVEEDOR NUEVO CUANDO SE REALICE EL CAMBIO)
+  //METODO INSTANCIA---BUSCA LAS ANTENAS DENTRO DE UNA SEDE Y SON DE UN PROVEEDOR ESPECIFICO 
+  //PARA LA FUNCIONALIDAD MEJORA TU PLAN (PARA SETEAR UNA ANTENA DEL PROVEEDOR NUEVO CUANDO SE REALICE EL CAMBIO)
   public static Antena antenasSede(String sede, String proveedor){
     for(Antena antena: antenasTotales){
       if(antena.getSede().equals(sede)){
@@ -57,14 +62,17 @@ public class Antena extends Cobertura{
     return null;
   }
 
-  //METODO INSTANCIA---IMPLEMENTACION Y SOBREESCRITURA METODO ABSTRACTO QUE SE HEREDA DE COBERTURA-FUNCIONALIDAD TEST--BUSCA UNA ANTENA EN LA QUE EL CLIENTE SE ENCUENTRE DENTRO DE SU ZONA DE COBERTURA Y LA GENERACION DE ESTA Y EL ROUTER SEAN LAS MISMAS
+  //METODO INSTANCIA---IMPLEMENTACION Y SOBREESCRITURA METODO ABSTRACTO HEREDADO DE COBERTURA - FUNCIONALIDAD TEST
+  //BUSCA UNA ANTENA EN LA QUE EL CLIENTE SE ENCUENTRE EN SU ZONA DE COBERTURA Y LA GENERACION DE ESTA Y EL ROUTER SEAN LAS MISMAS
   @Override
   public Antena rastrearGeneracionCompatible(ArrayList<Antena> antenasSede, Router r){
       
-     List<Antena> antenasCercanas=antenasSede.stream().filter(antenas -> antenas.verificarZonaCobertura(r,antenas)).collect(Collectors.toList());
+     List<Antena> antenasCercanas=antenasSede.stream().
+     filter(antenas -> antenas.verificarZonaCobertura(r,antenas)).collect(Collectors.toList());
     ArrayList<Antena> antenaRecomendada=new ArrayList<Antena>();
 
-      Antena antenaEncontrada=antenasCercanas.stream().filter(antenas->antenas.getGeneracion()==r.getGeneracion()).findFirst().orElse(null);
+      Antena antenaEncontrada=antenasCercanas.stream().
+      filter(antenas->antenas.getGeneracion()==r.getGeneracion()).findFirst().orElse(null);
 
     if(antenaRecomendada!=null){
       antenaRecomendada.add(antenaEncontrada);
