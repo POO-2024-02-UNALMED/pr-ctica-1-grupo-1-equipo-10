@@ -1,11 +1,7 @@
 package uiMain;
 
-import java.util.*;
-
 import baseDatos.Deserializador;
 import baseDatos.Serializador;
-
-import java.awt.geom.*;
 import gestorAplicacion.enrutadorHFC.Antena;
 import gestorAplicacion.enrutadorHFC.Cobertura;
 import gestorAplicacion.enrutadorHFC.Dispositivo;
@@ -14,8 +10,9 @@ import gestorAplicacion.enrutadorHFC.Servidor;
 import gestorAplicacion.host.Cliente;
 import gestorAplicacion.host.ProveedorInternet;
 import gestorAplicacion.servicio.Factura;
-import gestorAplicacion.servicio.Plano;
 import gestorAplicacion.servicio.Mes;
+import java.util.*;
+import java.util.stream.IntStream;
 
 public class Main {
 
@@ -404,6 +401,9 @@ public class Main {
                         System.out.println("Digita por favor la opción que deseas: " + "\n1. Visualizar dispositivos de 3G." + "\n2. Visualizar dispositivos de 4G." + "\n3. Visualizar dispositivos de 5G."
                         + "\n4. Visualizar todos los dispositivos conectados."+ "\n5. Regresar al menú inicial.");
                         opc = sc.nextInt();
+                        if (sc.hasNextLine()) {
+                          sc.nextLine(); 
+                        }
 
                         if (opc == 1 || opc == 2 || opc == 3 || opc == 4) { //SE PROCEDE A MOSTRAR POR CONSOLA LOS DISPOSITIVOS DE ACUERDO A LA OPCION ELEGIDA
                             Vcontrol7 = true;
@@ -463,13 +463,40 @@ public class Main {
                                       Vcontrol1 = false;
                               }
                             } else {
-                                System.out.println("Lista de dispositivos conectados a tu Router:");
-                                  for (Dispositivo dispositivo : lista) {
-                                    System.out.println("Id: "+(int)(Dispositivo.getDispositivosTotales().indexOf(dispositivo)+1));
-                                    System.out.println(dispositivo);
-                                    Vcontrol1 = false;
-                                      
-                                  }
+                              System.out.println("Lista de dispositivos conectados a tu Router:");
+                              if (lista.isEmpty() == false) {
+                                for (Dispositivo dispositivo : lista) {
+                                  System.out.println("Id: "+(int)(Dispositivo.getDispositivosTotales().indexOf(dispositivo)+1));
+                                  System.out.println(dispositivo);
+                                  System.out.println(lista);
+                                  Vcontrol7 = false;
+                                  Vcontrol1 = false;
+                                }
+                              } else {
+                                System.out.println("No tienes dispositivos conectados");
+                                boolean rep = false;
+                                while (rep == false) {
+                                System.out.println("¿Deseas repetir el proceso?\nNO\nSI");
+                                String conf = sc.nextLine().toUpperCase();
+                                if (conf.equals("SI")){
+                                  System.out.println("\nIngresa tu Id: ");
+                                  ID = sc.nextLong();
+                                  
+                                  System.out.println("Ingresa el nombre de tu proveedor: ");
+                                  sc.nextLine();
+                                  proveedor = sc.nextLine().toLowerCase();
+                                  rep = true;
+                                  Vcontrol7 = false;
+                                } else if (conf.equals("NO")){
+                                  Vcontrol1 = false;
+                                  Vcontrol7 = true;
+                                  rep = true;
+                                } else {
+                                  System.out.println("\nDesbes ingresar SI o NO");
+                                  rep = false;
+                                }
+                                }
+                              }
                             }
                                   
                         } else if (opc == 5) { //REGRESO AL MENU PRINCIPAL
@@ -483,7 +510,13 @@ public class Main {
                     }
                   } else {
                     System.out.println("No tienes permitido visualizar los dispositivos conectados con este proveedor.");
-                    break;
+                      System.out.println("Ingresa tu Id: ");
+                      ID = sc.nextLong();
+                      
+                      System.out.println("Ingresa el nombre de tu proveedor: ");
+                      sc.nextLine();
+                      proveedor = sc.nextLine().toLowerCase();
+                      Vcontrol3 = true;
                   }
                   Vcontrol3 = false;
                   break; 
@@ -495,6 +528,7 @@ public class Main {
                   System.out.println("Ingresa el nombre de tu proveedor: ");
                   sc.nextLine();
                   proveedor = sc.nextLine().toLowerCase();
+                  Vcontrol3 = false;
               }
             }
 
@@ -663,7 +697,7 @@ public class Main {
               }
 
             } else { //EL PROVEEDOR NO EXISTE
-                System.out.println("Datos incorrectos, introdúcelos de nuevo.");
+                System.out.println("Proveedor no encontrado, diligencia de nuevo.");
                 System.out.println("Ingresa su Id: ");
                 ID = sc.nextLong();
                 System.out.println("Ingresa su nombre: ");
@@ -712,7 +746,7 @@ public class Main {
                       System.out.println("Te recomendamos remover dispositivos");
                       System.out.println("Dispositvos:\n");
                       ArrayList<Dispositivo> dispositivosClientes = clienteActual.getModem().verificarDispositivos(Dispositivo.getDispositivosTotales(), clienteActual.getModem());
-                      dispositivosClientes.stream().forEach(System.out::println);
+                      IntStream.range(0, dispositivosClientes.size()).forEach(i -> System.out.println((i + 1) + ". " + dispositivosClientes.get(i)));
                       System.out.print("Indica el número del dispositivo que deseas remover: ");
                       opc=sc.nextInt();
 
