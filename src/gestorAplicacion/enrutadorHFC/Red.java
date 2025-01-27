@@ -16,7 +16,7 @@ public interface Red{
   static final int FLUJO_RED_PRELIMINAR=500;
 
   //MÉTODOS
-  //FUNCIONALIDAD REPORTE--VERIFICA ADMIN Y RETORNA SERVIDORES DE UN PROVEEDOR EN TODAS LAS LOCALIDADES
+  //METODO POR DEFAULT-FUNCIONALIDAD REPORTE--VERIFICA ADMIN Y RETORNA SERVIDORES DE UN PROVEEDOR EN TODAS LAS LOCALIDADES
   default ArrayList<Servidor> verificarAdmin(ArrayList<ProveedorInternet> proveedores, String nombre){
     ArrayList<Servidor> servidoresProveedor = new ArrayList<>();
     for(ProveedorInternet proveedor: proveedores){
@@ -32,7 +32,7 @@ public interface Red{
   }
   ArrayList<Integer> distanciasOptimas(ArrayList<Cliente> clientes,ArrayList<Integer> listaIntensidadesClientes);
 
-  //FUNCIONALIDAD REPORTE--CALCULA EL PROMEDIO DE LAS INTESIDADES NETAS---SE USA POR LIGADURA DINAMICA
+  //METODO ESTATICO-FUNCIONALIDAD REPORTE--CALCULA EL PROMEDIO DE LAS INTESIDADES NETAS---SE USA POR LIGADURA DINAMICA
   static int calcularPromedioIntensidad(ArrayList<Integer> intensidades) {
     return intensidades.stream().mapToInt(Integer::intValue).sum() / intensidades.size();
   }
