@@ -468,7 +468,6 @@ public class Main {
                                 for (Dispositivo dispositivo : lista) {
                                   System.out.println("Id: "+(int)(Dispositivo.getDispositivosTotales().indexOf(dispositivo)+1));
                                   System.out.println(dispositivo);
-                                  System.out.println(lista);
                                   Vcontrol7 = false;
                                   Vcontrol1 = false;
                                 }
