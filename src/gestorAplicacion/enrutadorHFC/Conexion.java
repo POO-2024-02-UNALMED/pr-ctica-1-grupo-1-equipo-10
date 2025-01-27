@@ -23,7 +23,8 @@ public class Conexion extends Router{
 
 	//METODO HEREDADO DE ROUTER SOBREESCRITO CON CUAL SE APLICA LIGADURA DINÁMICA
 	public int getVelocidad() {
-    	int velocidadActual = ((cliente.getModem().actualizarVelocidad(cliente).get(0) + cliente.getModem().actualizarVelocidad(cliente).get(1)) / 2)*generacion*generacion;
+    	int velocidadActual = ((cliente.getModem().actualizarVelocidad(cliente).
+		get(0) + cliente.getModem().actualizarVelocidad(cliente).get(1)) / 2)*generacion*generacion;
 		return velocidadActual;
 	}
 
