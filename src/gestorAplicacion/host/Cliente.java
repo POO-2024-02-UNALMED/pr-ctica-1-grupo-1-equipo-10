@@ -11,6 +11,7 @@ import gestorAplicacion.enrutadorHFC.Servidor;
 import gestorAplicacion.servicio.Factura;
 import gestorAplicacion.servicio.Plano;
 import gestorAplicacion.enrutadorHFC.Antena;
+import gestorAplicacion.enrutadorHFC.Dispositivo;
 
 public class Cliente implements Serializable{
 
@@ -106,6 +107,7 @@ public class Cliente implements Serializable{
       Plano planoCliente = new Plano(coordenadaX,coordenadaY);
       planoCliente.setSede(servidorAsociado.getCoordenadas().getSede());
       routercliente.setCoordenadas(planoCliente);
+      Dispositivo dispo = new Dispositivo(cliente.getModem(), "Celular", "3G");
 
       for(Antena antena: Antena.getAntenasTotales()){
         if(antena.getSede().equals(sede)){
@@ -126,6 +128,7 @@ public class Cliente implements Serializable{
       Plano planoCliente = new Plano(coordenadaX,coordenadaY);
       planoCliente.setSede(servidorAsociado.getCoordenadas().getSede());
       routercliente.setCoordenadas(planoCliente);
+      Dispositivo dispo = new Dispositivo(cliente.getModem(), "Celular", "3G");
 
       for(Antena antena: Antena.getAntenasTotales()){
         if(antena.getSede().equals(sede)){
@@ -146,6 +149,7 @@ public class Cliente implements Serializable{
       Plano planoCliente = new Plano(coordenadaX,coordenadaY);
       planoCliente.setSede(servidorAsociado.getCoordenadas().getSede());
       routercliente.setCoordenadas(planoCliente);
+      Dispositivo dispo = new Dispositivo(cliente.getModem(), "Celular", "3G");
       
       for(Antena antena: Antena.getAntenasTotales()){
         if(antena.getSede().equals(sede)){

@@ -51,6 +51,8 @@ public class ProveedorInternet implements Serializable{
            return cliente;
          }else if(cliente.getNombrePlan().equals("STANDARD")){
            return cliente;
+          }else if(cliente.getNombrePlan().equals("BASIC")){
+            return cliente;
          }else{
           return null;
          }
@@ -63,7 +65,7 @@ public class ProveedorInternet implements Serializable{
   public Cliente verificarCliente(String nombre,long id){
     for (Cliente cliente : clientes) {
       if ((cliente.getID() == id) && (cliente.getNombre().equals(nombre))){
-        if((cliente.getModem().verificarDispositivos(Dispositivo.getDispositivosTotales(),cliente.getModem())).size()>2){
+        if((cliente.getModem().verificarDispositivos(Dispositivo.getDispositivosTotales(),cliente.getModem())).size()>=1){
           return cliente;
         }
       }
