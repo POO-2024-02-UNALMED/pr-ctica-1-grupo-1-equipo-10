@@ -608,7 +608,7 @@ public class Main {
                             boolean Vcontrol11=false;
                             while (Vcontrol11==false){
                               System.out.println("Digite por favor la cantidad total a pagar: ");
-                              if (clienteActual.getFactura().accionesPagos(2) != null) { //CUARTO METODO DE LA FUNCIONALIDAD QUE COMPRUEBA QUE SE HAYA CANCELADO TODO
+                              if (clienteActual.getFactura().accionesPagos(2) != null) { //CUARTO METODO DE LA FUNCIONALIDAD QUE COMPRUEBA QUE SE HAYA CANCELADO
                                 
                                 Vcontrol11=true;
 
